@@ -1,4 +1,7 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faPencilAlt, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
 import HeroSearch from '../HeroSearch/HeroSearch';
 
 const Hero = () => {
@@ -22,22 +25,21 @@ const Hero = () => {
                         <ul className="home_details_list d-flex flex-row align-items-center justify-content-start">
                           <li>
                             <div className="home_details_image">
-                              {/* <img src="../../images/icon_1.png" alt="" /> */}
-                              <img src={require('../../images/icon_1.png')} alt="" />
+                              <FontAwesomeIcon color="white" icon={faSearch} />
                             </div>
                             <span> Search</span>
                           </li>
                           <li>
                             <div className="home_details_image">
-                              {/* <img src="images/icon_2.png" alt="" /> */}
-                              <img src={require('../../images/icon_2.png')} alt="" />
+                              <FontAwesomeIcon color="white" icon={faPencilAlt} />
                             </div>
                             <span> Review</span>
                           </li>
                           <li>
                             <div className="home_details_image">
                               {/* <img src="images/icon_3.png" alt="" /> */}
-                              <img src={require('../../images/icon_3.png')} alt="" />
+                              {/* <img src={require('../../images/icon_3.png')} alt="" /> */}
+                              <FontAwesomeIcon color="white" icon={faEyeSlash} />
                             </div>
                             <span> Anonymously</span>
                           </li>

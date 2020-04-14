@@ -609,6 +609,16 @@ section {
 .search_form_content > div:not(:last-child) {
   border-right: solid 2px #d1d1d1;
 }
+.search_form_input {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border: none;
+  background: transparent;
+  // can optionally be used to disable the outline -- might be bad for accessibility, but looks better for able users
+  outline: none;
+}
 .search_form_select {
   display: block;
   position: relative;
