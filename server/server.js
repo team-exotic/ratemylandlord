@@ -16,7 +16,6 @@ app.use(cookieParser());
 
 // serve static files
 app.use('/public', express.static(path.join(__dirname, '../client/public')));
-
 // serve index.html
 app.get('/', (req, res) =>
   res.status(200).sendFile(path.resolve(__dirname, '../client/public/index.html'))
@@ -28,10 +27,14 @@ const apiRouter = require('./routes/api');
 
 // route handlers
 app.use('/login', loginRouter);
+app.use('/signup', loginRouter);
 app.use('/api', apiRouter);
 
 // catch-all route handler for any unknown route requests
-app.use((req, res) => res.sendStatus(404));
+app.use((req, res) => {
+  console.log('in catch-all route handler');
+  res.sendStatus(404);
+});
 
 // global error handler
 app.use((err, req, res) => {

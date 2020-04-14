@@ -4,12 +4,28 @@ const bcrypt = require('bcryptjs');
 const userController = {};
 
 userController.verifyUser = (req, res, next) => {
+  console.log('in verifyuser');
   const { username, password } = req.body;
   const userQuery = {
-    text: '',
-    values: ''
+    text: 'SELECT * FROM user WHERE username = $1 AND password = $2',
+    values: [username, password]
   };
-  db.query();
+  db.query(userQuery)
+    .then((user) => {
+      console.log('this is user data received back', user);
+      if (user.rows.length === 0) {
+        res.locals.matchedFound = false;
+      } else {
+        res.locals.user = user.rows[0];
+      }
+
+      return next();
+    })
+    .catch((err) =>
+      next({
+        log: `error in middleware userController.verifyUser: ${err}`
+      })
+    );
 };
 
 userController.createUser = (req, res, next) => {
