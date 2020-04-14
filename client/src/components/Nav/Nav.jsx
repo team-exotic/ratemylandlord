@@ -23,6 +23,14 @@ import React from 'react';
               </li>
             </ul>
           </nav>
+          <div class="phone_num ml-auto">
+            <div class="phone_num_inner">
+              <span>Login/Signup</span>
+            </div>
+          </div>
+          <div class="hamburger ml-auto">
+            <i class="fa fa-bars"aria-hidden="true"></i>
+          </div>
         </div>
       </div>
     </div>
