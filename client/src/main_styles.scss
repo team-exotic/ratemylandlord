@@ -498,6 +498,8 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  // background-image: './images/down.png';
+  background-image: url('/images/home_slider_1.jpg') !important;
 }
 .slide_container {
   width: 100%;
