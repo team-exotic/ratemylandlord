@@ -3,6 +3,7 @@ import React from 'react';
 const Home = () => {
   return (
     <div className="home">
+      {/* //maybe insert here */}
       <div className="home_slider_container">
         <div className="owl-carousel owl-theme home_slider">
           <div className="owl-item">
