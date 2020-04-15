@@ -319,7 +319,7 @@ section {
   -o-transition: all 200ms ease;
   transition: all 200ms ease;
 }
-.main_nav ul li.active a{
+.main_nav ul li.active a {
   color: #ffffff;
 }
 .main_nav ul li a:hover {
@@ -347,8 +347,7 @@ section {
   margin-left: 11px;
   line-height: 39px;
 }
-.phone_num span:hover{
-  // text-decoration: underline;
+.phone_num span:hover {
   border-bottom: 2px solid currentColor;
 }
 .hamburger {
