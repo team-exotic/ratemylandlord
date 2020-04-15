@@ -4,15 +4,15 @@ const bcrypt = require('bcryptjs');
 const userController = {};
 
 userController.verifyUser = (req, res, next) => {
-  console.log('in verifyuser');
+  console.log('in verifyuser', req.body);
   const { username, password } = req.body;
   const userQuery = {
-    text: 'SELECT * FROM user WHERE username = $1 AND password = $2',
+    text: 'SELECT * FROM "user" WHERE username = $1 AND password = $2',
     values: [username, password]
   };
   db.query(userQuery)
     .then((user) => {
-      console.log('this is user data received back', user);
+      console.log('this is user data received back', user.rows[0]);
       if (user.rows.length === 0) {
         res.locals.matchedFound = false;
       } else {
@@ -21,11 +21,11 @@ userController.verifyUser = (req, res, next) => {
 
       return next();
     })
-    .catch((err) =>
+    .catch((err) => {
       next({
         log: `error in middleware userController.verifyUser: ${err}`
-      })
-    );
+      });
+    });
 };
 
 userController.createUser = (req, res, next) => {

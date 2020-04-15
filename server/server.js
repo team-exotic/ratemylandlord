@@ -26,9 +26,9 @@ const loginRouter = require('./routes/login');
 const apiRouter = require('./routes/api');
 
 // route handlers
-app.use('/login', loginRouter);
-app.use('/signup', loginRouter);
-app.use('/api', apiRouter);
+app.use('/account', loginRouter);
+// app.use('/signup', loginRouter);
+app.use('/', apiRouter);
 
 // catch-all route handler for any unknown route requests
 app.use((req, res) => {
@@ -37,7 +37,7 @@ app.use((req, res) => {
 });
 
 // global error handler
-app.use((err, req, res) => {
+app.use((req, res, err) => {
   console.log(`global error handler caught unknown middleware error: ${err}`);
   res.status(400).json({ err: 'an error has occurred' });
 });

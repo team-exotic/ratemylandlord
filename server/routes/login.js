@@ -16,7 +16,8 @@ loginRouter.post(
     if (res.locals.err) {
       res.redirect('/login', { error: res.locals.err });
     } else if (res.locals.user) {
-      res.redirect('/'); // last page they were in
+      res.status(200).json(res.locals.user);
+      //res.redirect('/'); // last page they were in
     } else if (res.locals.matchedFound === false) {
       res.redirect('/signup', {
         message: 'that user account does not exist, please sign up'
