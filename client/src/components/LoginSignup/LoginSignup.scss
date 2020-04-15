@@ -128,7 +128,7 @@ button:hover {
 /*//////////////////////////////////////////////////////////////////
   [ login ]*/
 
-.limiter {
+.login {
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -137,6 +137,25 @@ button:hover {
     content: '';
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
       url(../../images/apartment-architecture-balcony-building-129494.jpg);
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+.signup {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  &::after {
+    content: '';
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url(../../images/apartment-architecture-city-colorful-415687.jpg);
     opacity: 0.9;
     top: 0;
     left: 0;

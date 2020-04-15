@@ -6,7 +6,6 @@ import './LoginSignup.scss';
 
 // destructures the currView off of the props to determine which view the component is a part of
 const LoginSignup = ({ currView }) => {
-  console.log(currView);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,18 +22,31 @@ const LoginSignup = ({ currView }) => {
     }
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    //   should probably trim the input data to eliminate spaces??
+    //   should fire a fetch request to the backend
+    // after parsing the response and making sure we didn't have an error, redirect to the main page
+  };
 
   return (
-    <div className="limiter">
+    <div className={currView === 'login' ? 'login' : 'signup'}>
       <div className="container-login100">
         <div className="wrap-login100">
           <form className="login100-form validate-form">
             <span className="login100-form-logo">
-              <img src="../../images/milestones_1.png" alt="apartments" />
+              <img
+                src={
+                  currView === 'login'
+                    ? '../../images/milestones_1.png'
+                    : '../../images/milestones_2.png'
+                }
+                alt="apartments"
+              />
             </span>
 
-            <span className="login100-form-title p-b-34 p-t-27">Log in</span>
+            <span className="login100-form-title p-b-34 p-t-27">
+              {currView === 'login' ? 'Log in' : 'Sign up'}
+            </span>
 
             <div className="wrap-input100 validate-input" data-validate="Enter username">
               <input
@@ -76,15 +88,19 @@ const LoginSignup = ({ currView }) => {
 
             <div className="container-login100-form-btn">
               <button type="submit" className="login100-form-btn">
-                Login
+                {currView === 'login' ? 'Log In' : 'Sign Up'}
               </button>
             </div>
 
-            <div className="text-center p-t-3">
-              <a className="txt1" href="#">
-                Forgot Password?
-              </a>
-            </div>
+            {currView === 'login' ? (
+              <div className="text-center p-t-3">
+                <a className="txt1" href="/password-reset">
+                  Forgot Password?
+                </a>
+              </div>
+            ) : (
+              ''
+            )}
           </form>
         </div>
       </div>
