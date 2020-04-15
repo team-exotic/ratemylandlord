@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import './styles/owl.theme.default.scss';
+import './styles/owl.carousel.scss';
+import './styles/main_styles.scss';
+import './styles/responsive.scss';
+import Home from './views/Home/Home';
+import Login from './views/Login/Login';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact render={(props) => <Home {...props} />} />
+        <Route path="/" exact render={(props) => <Login {...props} />} />
+      </Switch>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
