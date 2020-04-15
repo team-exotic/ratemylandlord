@@ -7,7 +7,7 @@ import './Nav.scss';
 
 const NavBar = () => {
   const [isLoggedIn, setLogin] = useState(false);
-  useEffect(() => {});
+
   return (
     <header class="header">
       <div class="container">
@@ -18,9 +18,9 @@ const NavBar = () => {
                 <a href="#">
                   {/* <img src="images/logo.png" alt></img> */}
                   <div className="nav_title">
-                  <FontAwesomeIcon color="white" icon={faBuilding} />
+                    <FontAwesomeIcon color="white" icon={faBuilding} />
                     <span> Rate My Landlord </span>
-                    </div>
+                  </div>
                 </a>
               </div>
               <nav class="phone_num ml-auto">
