@@ -113,9 +113,16 @@ button:hover {
   [ Utility ]*/
 .txt1 {
   //   font-family: Poppins-Regular;
-  font-size: 13px;
+  font-size: 1.4rem;
   color: #e5e5e5;
   line-height: 1.5;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.p-t-3 {
+  padding-top: 3rem;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -124,6 +131,20 @@ button:hover {
 .limiter {
   width: 100%;
   margin: 0 auto;
+  position: relative;
+
+  &::after {
+    content: '';
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url(../../images/apartment-architecture-balcony-building-129494.jpg);
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
 }
 
 .container-login100 {
@@ -143,7 +164,7 @@ button:hover {
   background-position: center;
   background-size: cover;
   position: relative;
-  z-index: 1;
+  //   z-index: 1;
 }
 
 .container-login100::before {
@@ -165,7 +186,7 @@ button:hover {
   padding: 55px 55px 37px 55px;
 
   //   background: #9152f8;
-  background: linear-gradient(to bottom, #487fee, #32fa95);
+  background: linear-gradient(to top, #487fee, #32fa95);
 
   //   background: -moz-linear-gradient(top, #7579ff, #b224ef);
   //   background: linear-gradient(top, #7579ff, #b224ef);
@@ -203,6 +224,7 @@ button:hover {
   line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
+  padding: 34px 0;
 
   display: block;
 }
@@ -213,7 +235,7 @@ button:hover {
 .wrap-input100 {
   width: 100%;
   position: relative;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.24);
+  border-bottom: 2px solid rgba(255, 255, 255, 1);
   margin-bottom: 30px;
 }
 
@@ -316,52 +338,53 @@ button:hover {
 }
 
 .input-checkbox100 {
-  display: none;
+  display: inline-block;
+  margin-left: -5px;
+  margin-right: -5px;
 }
 
 .label-checkbox100 {
-  //   font-family: Poppins-Regular;
   font-size: 1.6rem;
   font-weight: 500;
   color: #fff;
   line-height: 1.2;
 
-  display: block;
+  display: inline-block;
   position: relative;
   padding-left: 26px;
   cursor: pointer;
 }
 
-.label-checkbox100::before {
-  content: '\f26b';
-  //   font-family: Material-Design-Iconic-Font;
-  font-size: 13px;
-  color: transparent;
+// .label-checkbox100::before {
+//   content: '\f26b';
+//   //   font-family: Material-Design-Iconic-Font;
+//   font-size: 13px;
+//   color: transparent;
 
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 2px;
-  background: #fff;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
+//   display: -webkit-box;
+//   display: -webkit-flex;
+//   display: -moz-box;
+//   display: -ms-flexbox;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: absolute;
+//   width: 16px;
+//   height: 16px;
+//   border-radius: 2px;
+//   background: #fff;
+//   left: 0;
+//   top: 50%;
+//   -webkit-transform: translateY(-50%);
+//   -moz-transform: translateY(-50%);
+//   -ms-transform: translateY(-50%);
+//   -o-transform: translateY(-50%);
+//   transform: translateY(-50%);
+// }
 
-.input-checkbox100:checked + .label-checkbox100::before {
-  color: #555555;
-}
+// .input-checkbox100:checked + .label-checkbox100::before {
+//   color: #555555;
+// }
 
 /*------------------------------------------------------------------
   [ Button ]*/
@@ -395,11 +418,6 @@ button:hover {
   border-radius: 25px;
 
   background: #222;
-  //   background: -webkit-linear-gradient(bottom, #7579ff, #b224ef);
-  //   background-image: linear-gradient(to bottom, #7579ff, #b224ef);
-  //   background: -o-linear-gradient(bottom, #7579ff, #b224ef);
-  //   background: -moz-linear-gradient(bottom, #7579ff, #b224ef);
-  //   background: linear-gradient(bottom, #7579ff, #b224ef);
   position: relative;
   z-index: 1;
 

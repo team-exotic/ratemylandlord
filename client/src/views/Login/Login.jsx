@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
 import './Login.scss';
 
 const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  /**
+   * this handleChange covers both the username and password
+   * it determines which one to update based on the event it receives
+   * if the event target has a type of password, then it updates password -- otherwise, it updates username
+   */
+  const handleChange = (e) => {
+    if (e.target.type === 'password') {
+      setPassword(e.target.value);
+    } else {
+      setUsername(e.target.value);
+    }
+  };
+
+  const handleSubmit = () => {};
+
   return (
     <div className="limiter">
-      <div
-        className="container-login100"
-        // style="background-image: url('images/bg-01.jpg');"
-      >
+      <div className="container-login100">
         <div className="wrap-login100">
           <form className="login100-form validate-form">
             <span className="login100-form-logo">
-              <i className="zmdi zmdi-landscape" />
+              <img src="../../images/milestones_1.png" alt="apartments" />
             </span>
 
             <span className="login100-form-title p-b-34 p-t-27">Log in</span>
@@ -25,6 +40,8 @@ const Login = () => {
                 type="text"
                 name="username"
                 placeholder="Username"
+                value={username}
+                onChange={handleChange}
               />
               {/* these icons should be brought in for style appeal, but need to have the css modified so they float when the input is selected */}
               <FontAwesomeIcon className="focus-input100" color="white" icon={faUser} />
@@ -36,6 +53,8 @@ const Login = () => {
                 type="password"
                 name="pass"
                 placeholder="Password"
+                value={password}
+                onChange={handleChange}
               />
               {/* these icons should be brought in for style appeal, but need to have the css modified so they float when the input is selected */}
               <FontAwesomeIcon className="focus-input100" color="white" icon={faLock} />
@@ -59,11 +78,11 @@ const Login = () => {
               </button>
             </div>
 
-            {/* <div className="text-center p-t-90">
+            <div className="text-center p-t-3">
               <a className="txt1" href="#">
                 Forgot Password?
               </a>
-            </div> */}
+            </div>
           </form>
         </div>
       </div>
