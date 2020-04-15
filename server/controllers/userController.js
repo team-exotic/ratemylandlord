@@ -70,30 +70,4 @@ userController.createUser = (req, res, next) => {
   }
 };
 
-userController.createLandLord = (req, res, next) => {
-  const { name, address } = req.body;
-  if (
-    (req.body.name !== null && typeof req.body.name === 'string') ||
-    (req.body.address !== null && typeof req.body.address === 'string')
-  ) {
-    const userQuery = {
-      text: `
-    INSERT INTO "property"
-    (name, address)
-    VALUES
-    ($1, $2)
-    `,
-      values: [name, address]
-    };
-    db.query(userQuery)
-      .then((landLord) => {
-        res.locals.name = landLord.name;
-        res.locals.address = landLord.address;
-        return next();
-      })
-      .catch((err) => {
-        return next(`Error inside createLandLord: ${err}`);
-      });
-  }
-};
 module.exports = userController;
