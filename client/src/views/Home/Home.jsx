@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 
 const Home = () => {
   return (
@@ -125,6 +126,14 @@ const Home = () => {
           </div>
         </div>
       </div>
+=======
+import Hero from '../../components/HeroSection/Hero';
+
+const Home = () => {
+  return (
+    <div className="super_container">
+      <Hero />
+>>>>>>> master
     </div>
   );
 };
