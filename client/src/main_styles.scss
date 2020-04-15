@@ -337,7 +337,7 @@ section {
   height: 100%;
   padding-left: 16px;
   padding-right: 18px;
-  background: #3f6fce;
+  background: transparent;
   border-radius: 20px;
 }
 .phone_num span {
@@ -348,7 +348,8 @@ section {
   line-height: 39px;
 }
 .phone_num span:hover{
-  color: #2cd983;
+  // text-decoration: underline;
+  border-bottom: 2px solid currentColor;
 }
 .hamburger {
   display: none;

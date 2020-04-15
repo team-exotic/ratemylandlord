@@ -15,7 +15,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path="/" exact render={(props) => <Home {...props} />} />
-        <Route path="/" exact render={(props) => <Login {...props} />} />
+        <Route path="/login" exact render={(props) => <Login {...props} />} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
