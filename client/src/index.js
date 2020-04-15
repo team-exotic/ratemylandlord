@@ -8,6 +8,7 @@ import './styles/main_styles.scss';
 import './styles/responsive.scss';
 import Home from './views/Home/Home';
 import Login from './views/Login/Login';
+import Signup from './views/Signup/Signup';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -15,7 +16,8 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path="/" exact render={(props) => <Home {...props} />} />
-        <Route path="/" exact render={(props) => <Login {...props} />} />
+        <Route path="/login" exact render={(props) => <Login {...props} />} />
+        <Route path="/signup" exact render={(props) => <Signup {...props} />} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
