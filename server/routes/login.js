@@ -1,6 +1,7 @@
 const express = require('express');
-
 const loginRouter = express.Router();
+const userController = require('../controllers/userController');
+const cookieController = require('../controllers/cookieController');
 
 // add middleware (controllers)
 //or signup

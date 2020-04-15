@@ -3,11 +3,15 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.port || 8000;
-// parse JSON and cookies
-app.use(express.json());
+// parse JSON and return req.bodycookies
+app.use(bodyParser.json());
+/*automatically parse urlencoded body content from incoming
+request and place it in req.body*/
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // serve static files
