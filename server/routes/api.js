@@ -8,10 +8,12 @@ const propertyController = require('../controllers/propertyController');
 //add a property
 apiRouter.post('/property', (req, res) => {});
 
-//get property by address
-apiRouter.get('/property', (req, res) => {});
+//search property by address
+apiRouter.get('/property', propertyController.searchByAddress, (req, res) => {
+  res.status(200).json(res.locals);
+});
 
-//get property by city
+//search property by city
 apiRouter.get('/city', (req, res) => {});
 
 //post a rating on a property

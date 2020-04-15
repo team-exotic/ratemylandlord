@@ -34,7 +34,34 @@ propertyController.addRating = (req, res, next) => {};
 
 propertyController.addComment = (req, res, next) => {};
 
-propertyController.searchByAddress = (req, res, next) => {};
+propertyController.searchByAddress = (req, res, next) => {
+  const { address, name } = req.body;
+  if (name !== '') {
+    const propertyQuery = {
+      text: '',
+      values: ''
+    };
+  } else {
+    const propertyQuery = {
+      text: '',
+      values: ''
+    };
+  }
+  db.query(propertyQuery)
+    .then((property) => {
+      if (property.rows.length === 0) {
+        return (res.locals.matchedFound = false);
+      } else {
+        res.locals.property = property.rows;
+      }
+      return next();
+    })
+    .catch((err) => {
+      next({
+        log: `error in middleware propertyController.searchByAddress: ${err}`
+      });
+    });
+};
 
 propertyController.searchByCity = (req, res, next) => {};
 
