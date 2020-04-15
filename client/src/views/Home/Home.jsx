@@ -1,8 +1,9 @@
 import React from 'react';
-
+import Nav from '../../components/Nav/Nav'
 const Home = () => {
   return (
     <div className="home">
+      <Nav></Nav>
       {/* //maybe insert here */}
       <div className="home_slider_container">
         <div className="owl-carousel owl-theme home_slider">
