@@ -34,21 +34,23 @@ propertyController.addRating = (req, res, next) => {};
 
 propertyController.addComment = (req, res, next) => {};
 
+//gives list of a matching addresses
 propertyController.searchByAddress = (req, res, next) => {
   const { address, name } = req.body;
   if (name !== '') {
     const propertyQuery = {
-      text: '',
-      values: ''
+      text: 'SELECT * FROM "property" WHERE name=$1 or address=$2 ',
+      values: [name, address]
     };
   } else {
     const propertyQuery = {
-      text: '',
-      values: ''
+      text: 'SELECT * FROM "property" WHERE address=$1',
+      values: [address]
     };
   }
   db.query(propertyQuery)
     .then((property) => {
+      console.log('in db query for searchbyaddress data received:', property);
       if (property.rows.length === 0) {
         return (res.locals.matchedFound = false);
       } else {
@@ -64,5 +66,8 @@ propertyController.searchByAddress = (req, res, next) => {
 };
 
 propertyController.searchByCity = (req, res, next) => {};
+
+//find the profile page (property row w/all comments and sections)
+propertyController.propertyProfile = (req, res, next) => {};
 
 module.exports = propertyController;
