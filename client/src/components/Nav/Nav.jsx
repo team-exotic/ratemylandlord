@@ -23,21 +23,6 @@ const NavBar = () => {
                     </div>
                 </a>
               </div>
-              {/* <nav class="main_nav">
-                <ul>
-                  <li class="active">
-                  <FontAwesomeIcon color="white" icon={faHome}/> 
-                    <a href="../../images/index.html"> Home </a>
-                  </li>
-                  <li class="active">
-                    need to get the profile button to conditionally render
-                    <a href="../../html_files/profile.html">Profile</a>
-                  </li>
-                  <li class="active">
-                    <a href="../../html_files/properties.html">Properties</a>
-                  </li>
-                </ul>
-              </nav> */}
               <nav class="phone_num ml-auto">
                 <Link className="phone_num_inner" Link to="/">
                   <span> Home </span>{' '}
