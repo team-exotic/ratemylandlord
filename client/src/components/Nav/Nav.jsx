@@ -1,19 +1,13 @@
 // build navr bar here and import it into hom.jsx
-import React,{ useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-
-import Home from '../../views/Home/Home.jsx';
-import Login from '../../views/Login/Login.jsx';
-
-// import Signup from '../../views/Signup/Signup.jsx';
+import './Nav.scss';
 
 const NavBar = () => {
   const [isLoggedIn, setLogin] = useState(false);
-  useEffect(() => {
-    
-  })
+  useEffect(() => {});
   return (
     <header class="header">
       <div class="container">
@@ -22,7 +16,11 @@ const NavBar = () => {
             <div class="header_content d-flex flex-row align-items-center justify-content-start">
               <div class="logo">
                 <a href="#">
-                  <img src="images/logo.png" alt></img>
+                  {/* <img src="images/logo.png" alt></img> */}
+                  <div className="nav_title">
+                  <FontAwesomeIcon color="white" icon={faBuilding} />
+                    <span> Rate My Landlord </span>
+                    </div>
                 </a>
               </div>
               {/* <nav class="main_nav">
