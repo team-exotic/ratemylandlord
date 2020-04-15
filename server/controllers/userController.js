@@ -4,12 +4,28 @@ const bcrypt = require('bcryptjs');
 const userController = {};
 
 userController.verifyUser = (req, res, next) => {
+  console.log('in verifyuser', req.body);
   const { username, password } = req.body;
   const userQuery = {
-    text: '',
-    values: ''
+    text: 'SELECT * FROM "user" WHERE username = $1 AND password = $2',
+    values: [username, password]
   };
-  db.query();
+  db.query(userQuery)
+    .then((user) => {
+      console.log('this is user data received back', user.rows[0]);
+      if (user.rows.length === 0) {
+        res.locals.matchedFound = false;
+      } else {
+        res.locals.user = user.rows[0];
+      }
+
+      return next();
+    })
+    .catch((err) => {
+      next({
+        log: `error in middleware userController.verifyUser: ${err}`
+      });
+    });
 };
 
 userController.createUser = (req, res, next) => {
@@ -54,30 +70,4 @@ userController.createUser = (req, res, next) => {
   }
 };
 
-userController.createLandLord = (req, res, next) => {
-  const { name, address } = req.body;
-  if (
-    (req.body.name !== null && typeof req.body.name === 'string') ||
-    (req.body.address !== null && typeof req.body.address === 'string')
-  ) {
-    const userQuery = {
-      text: `
-    INSERT INTO "property"
-    (name, address)
-    VALUES
-    ($1, $2)
-    `,
-      values: [name, address]
-    };
-    db.query(userQuery)
-      .then((landLord) => {
-        res.locals.name = landLord.name;
-        res.locals.address = landLord.address;
-        return next();
-      })
-      .catch((err) => {
-        return next(`Error inside createLandLord: ${err}`);
-      });
-  }
-};
 module.exports = userController;
