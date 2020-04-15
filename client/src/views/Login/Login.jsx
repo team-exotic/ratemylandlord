@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
 import './Login.scss';
 
@@ -24,7 +26,8 @@ const Login = () => {
                 name="username"
                 placeholder="Username"
               />
-              <span className="focus-input100" data-placeholder="&#xf207;" />
+              {/* these icons should be brought in for style appeal, but need to have the css modified so they float when the input is selected */}
+              <FontAwesomeIcon className="focus-input100" color="white" icon={faUser} />
             </div>
 
             <div className="wrap-input100 validate-input" data-validate="Enter password">
@@ -34,7 +37,8 @@ const Login = () => {
                 name="pass"
                 placeholder="Password"
               />
-              <span className="focus-input100" data-placeholder="&#xf191;" />
+              {/* these icons should be brought in for style appeal, but need to have the css modified so they float when the input is selected */}
+              <FontAwesomeIcon className="focus-input100" color="white" icon={faLock} />
             </div>
 
             <div className="contact100-form-checkbox">

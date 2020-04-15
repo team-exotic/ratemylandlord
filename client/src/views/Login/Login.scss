@@ -1,152 +1,100 @@
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-// @font-face {
-//   font-family: Poppins-Regular;
-//   src: url('../fonts/poppins/Poppins-Regular.ttf');
+// /*---------------------------------------------*/
+// a {
+//   //   font-family: Poppins-Regular;
+//   font-size: 1.6rem;
+//   line-height: 1.7;
+//   color: #666666;
+//   margin: 0px;
+//   transition: all 0.4s;
+//   -webkit-transition: all 0.4s;
+//   -o-transition: all 0.4s;
+//   -moz-transition: all 0.4s;
 // }
 
-// @font-face {
-//   font-family: Poppins-Medium;
-//   src: url('../fonts/poppins/Poppins-Medium.ttf');
+// a:focus {
+//   outline: none !important;
 // }
 
-// @font-face {
-//   font-family: Poppins-Bold;
-//   src: url('../fonts/poppins/Poppins-Bold.ttf');
+// a:hover {
+//   text-decoration: none;
+//   color: #fff;
 // }
 
-// @font-face {
-//   font-family: Poppins-SemiBold;
-//   src: url('../fonts/poppins/Poppins-SemiBold.ttf');
-// }
-
-body,
-html {
-  height: 100%;
-  //   font-family: Poppins-Regular, sans-serif;
-}
-
-/*---------------------------------------------*/
-a {
-  //   font-family: Poppins-Regular;
-  font-size: 14px;
-  line-height: 1.7;
-  color: #666666;
-  margin: 0px;
-  transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-}
-
-a:focus {
-  outline: none !important;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #fff;
-}
-
-/*---------------------------------------------*/
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0px;
-}
-
-p {
-  //   font-family: Poppins-Regular;
-  font-size: 14px;
-  line-height: 1.7;
-  color: #666666;
-  margin: 0px;
-}
-
-ul,
-li {
-  margin: 0px;
-  list-style-type: none;
-}
-
-/*---------------------------------------------*/
+// /*---------------------------------------------*/
 input {
   outline: none;
   border: none;
 }
 
-textarea {
-  outline: none;
-  border: none;
-}
+// textarea {
+//   outline: none;
+//   border: none;
+// }
 
 textarea:focus,
 input:focus {
   border-color: transparent !important;
 }
 
-input:focus::-webkit-input-placeholder {
-  color: transparent;
-}
-input:focus:-moz-placeholder {
-  color: transparent;
-}
-input:focus::-moz-placeholder {
-  color: transparent;
-}
-input:focus:-ms-input-placeholder {
-  color: transparent;
-}
+// input:focus::-webkit-input-placeholder {
+//   color: transparent;
+// }
+// input:focus:-moz-placeholder {
+//   color: transparent;
+// }
+// input:focus::-moz-placeholder {
+//   color: transparent;
+// }
+// input:focus:-ms-input-placeholder {
+//   color: transparent;
+// }
 
-textarea:focus::-webkit-input-placeholder {
-  color: transparent;
-}
-textarea:focus:-moz-placeholder {
-  color: transparent;
-}
-textarea:focus::-moz-placeholder {
-  color: transparent;
-}
-textarea:focus:-ms-input-placeholder {
-  color: transparent;
-}
+// textarea:focus::-webkit-input-placeholder {
+//   color: transparent;
+// }
+// textarea:focus:-moz-placeholder {
+//   color: transparent;
+// }
+// textarea:focus::-moz-placeholder {
+//   color: transparent;
+// }
+// textarea:focus:-ms-input-placeholder {
+//   color: transparent;
+// }
 
 input::-webkit-input-placeholder {
   color: #fff;
+  font-weight: 500;
 }
-input:-moz-placeholder {
-  color: #fff;
-}
-input::-moz-placeholder {
-  color: #fff;
-}
-input:-ms-input-placeholder {
-  color: #fff;
-}
+// input:-moz-placeholder {
+//   color: #fff;
+// }
+// input::-moz-placeholder {
+//   color: #fff;
+// }
+// input:-ms-input-placeholder {
+//   color: #fff;
+// }
 
-textarea::-webkit-input-placeholder {
-  color: #fff;
-}
-textarea:-moz-placeholder {
-  color: #fff;
-}
-textarea::-moz-placeholder {
-  color: #fff;
-}
-textarea:-ms-input-placeholder {
-  color: #fff;
-}
+// textarea::-webkit-input-placeholder {
+//   color: #fff;
+// }
+// textarea:-moz-placeholder {
+//   color: #fff;
+// }
+// textarea::-moz-placeholder {
+//   color: #fff;
+// }
+// textarea:-ms-input-placeholder {
+//   color: #fff;
+// }
 
-label {
-  margin: 0;
-  display: block;
-}
+// label {
+//   margin: 0;
+//   display: block;
+// }
 
-/*---------------------------------------------*/
+// /*---------------------------------------------*/
 button {
   outline: none !important;
   border: none;
@@ -157,9 +105,9 @@ button:hover {
   cursor: pointer;
 }
 
-iframe {
-  border: none !important;
-}
+// iframe {
+//   border: none !important;
+// }
 
 /*//////////////////////////////////////////////////////////////////
   [ Utility ]*/
@@ -217,7 +165,7 @@ iframe {
   padding: 55px 55px 37px 55px;
 
   //   background: #9152f8;
-  background: linear-gradient(to bottom, #7579ff, #b224ef);
+  background: linear-gradient(to bottom, #487fee, #32fa95);
 
   //   background: -moz-linear-gradient(top, #7579ff, #b224ef);
   //   background: linear-gradient(top, #7579ff, #b224ef);
@@ -272,7 +220,7 @@ iframe {
 .input100 {
   //   font-family: Poppins-Regular;
   font-size: 16px;
-  color: #fff;
+  color: #fff !important;
   line-height: 1.2;
 
   display: block;
@@ -291,6 +239,9 @@ iframe {
   top: 0;
   left: 0;
   pointer-events: none;
+  &:hover {
+    margin-top: -100px;
+  }
 }
 
 .focus-input100::before {
@@ -315,7 +266,7 @@ iframe {
   font-size: 22px;
   color: #fff;
 
-  content: attr(data-placeholder);
+  //   content: attr(data-placeholder);
   display: block;
   width: 100%;
   position: absolute;
@@ -329,18 +280,18 @@ iframe {
   transition: all 0.4s;
 }
 
-.input100:focus {
-  padding-left: 5px;
-}
+// .input100:focus {
+//   padding-left: 5px;
+// }
 
-.input100:focus + .focus-input100::after {
-  top: -22px;
-  font-size: 18px;
-}
+// .input100:focus + .focus-input100::after {
+//   top: -22px;
+//   font-size: 18px;
+// }
 
-.input100:focus + .focus-input100::before {
-  width: 100%;
-}
+// .input100:focus + .focus-input100::before {
+//   width: 100%;
+// }
 
 .has-val.input100 + .focus-input100::after {
   top: -22px;
@@ -370,7 +321,8 @@ iframe {
 
 .label-checkbox100 {
   //   font-family: Poppins-Regular;
-  font-size: 13px;
+  font-size: 1.6rem;
+  font-weight: 500;
   color: #fff;
   line-height: 1.2;
 
