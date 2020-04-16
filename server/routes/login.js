@@ -38,6 +38,5 @@ loginRouter.post(
     res.redirect('/'); // last page they were in
   }
 );
-// api routes
 
 module.exports = loginRouter;

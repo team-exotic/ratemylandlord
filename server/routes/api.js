@@ -7,7 +7,9 @@ const cookieController = require('../controllers/cookieController');
 // api routes
 
 //add a property
-apiRouter.post('/property', (req, res) => {});
+apiRouter.post('/property', propertyController.addProperty, (req, res) => {
+  res.redirect('/');
+});
 
 //search property by address
 apiRouter.get('/property', propertyController.searchByAddress, (req, res) => {
@@ -22,13 +24,14 @@ apiRouter.get('/property', propertyController.searchByAddress, (req, res) => {
   }
 });
 
+//get property by city
+apiRouter.get('/city', propertyController.searchByCity, (req, res) => {
+  res.status(200).send(res.locals.properties);
+});
 //get property profile page by propertyID
 apiRouter.get('/property/:id', propertyController.propertyProfile, (req, res) => {
   res.status(200).json(res.locals.propertyProfile);
 });
-
-//search property by city
-apiRouter.get('/city', (req, res) => {});
 
 //post a rating on a property
 apiRouter.post('/rating', (req, res) => {});

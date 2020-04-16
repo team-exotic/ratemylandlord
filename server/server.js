@@ -27,7 +27,6 @@ const apiRouter = require('./routes/api');
 
 // route handlers
 app.use('/', loginRouter);
-// app.use('/signup', loginRouter);
 app.use('/', apiRouter);
 
 // catch-all route handler for any unknown route requests

@@ -88,7 +88,24 @@ propertyController.searchByAddress = (req, res, next) => {
     });
 };
 
-propertyController.searchByCity = (req, res, next) => {};
+propertyController.searchByCity = (req, res, next) => {
+  let { address } = req.body;
+  const userQuery = {
+    text: `
+    SELECT * FROM "property"
+    WHERE address LIKE ('%' ||$1|| '%')
+    `,
+    values: [address]
+  };
+  db.query(userQuery)
+    .then((properties) => {
+      res.locals.properties = properties.rows;
+      return next();
+    })
+    .catch((err) => {
+      return next(`Error in searchByCity middleware: ${err}`);
+    });
+};
 
 //--- find the profile page (property row w/all comments and sections)----//
 
