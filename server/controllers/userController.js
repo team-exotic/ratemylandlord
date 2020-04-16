@@ -78,7 +78,7 @@ userController.createUser = (req, res, next) => {
     db.query(userQuery)
       .then((user) => {
         /*this console is only for debugging*/
-        console.log(user);
+        console.log('this is user res', user);
         return next();
       })
       .catch((err) => {
