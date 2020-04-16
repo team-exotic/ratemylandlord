@@ -12,17 +12,24 @@ const SearchResultItem = (property) => {
   const hardcodedPics = [
     'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb',
     'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?h=350&auto=compress&cs=tinysrgb',
-    'https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?h=350&auto=compress&cs=tinysrgb',
-    'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb'
+    'https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?h=350&auto=compress&cs=tinysrgb'
   ];
+
+  // generates a random placeholder image from the above array
+  const pickImg = () => {
+    const index = Math.floor(Math.random() * hardcodedPics.length);
+    return index;
+  };
+
   return (
     <div className="media">
-      <div className="fav-box">
+      {/* <div className="fav-box">
         <i className="fa fa-heart-o" aria-hidden="true" />
-      </div>
+      </div> */}
       <img
         className="d-flex align-self-start"
-        src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb"
+        // src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb"
+        src={hardcodedPics[pickImg()]}
         alt="house"
       />
       <div className="media-body pl-3">
