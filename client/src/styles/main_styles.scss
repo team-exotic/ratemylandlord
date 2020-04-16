@@ -324,9 +324,18 @@ section {
   -o-transition: all 200ms ease;
   transition: all 200ms ease;
 }
-.main_nav ul li.active a,
+.main_nav ul li.active a {
+  color: #ffffff;
+}
 .main_nav ul li a:hover {
   color: #2cd983;
+}
+.nav_title {
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-top: 11px;
 }
 .phone_num {
   height: 43px;
@@ -340,7 +349,7 @@ section {
   height: 100%;
   padding-left: 16px;
   padding-right: 18px;
-  background: #3f6fce;
+  background: transparent;
   border-radius: 20px;
 }
 .phone_num span {
@@ -349,6 +358,9 @@ section {
   color: #ffffff;
   margin-left: 11px;
   line-height: 39px;
+}
+.phone_num span:hover {
+  border-bottom: 2px solid currentColor;
 }
 .hamburger {
   display: none;

@@ -1,0 +1,62 @@
+CREATE TABLE "user" (
+	"username" varchar(255) NOT NULL,
+	"id" serial NOT NULL,
+	"password" varchar(255) NOT NULL UNIQUE,
+	CONSTRAINT "user_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "property" (
+	"id" serial NOT NULL,
+	"name" varchar(255),
+	"address" varchar(255),
+	"image" varchar,
+	CONSTRAINT "property_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "comments" (
+	"property_id" bigint NOT NULL,
+	"comment" varchar NOT NULL,
+	"created_at" DATE NOT NULL,
+	"created_by" bigint NOT NULL,
+	"id" serial NOT NULL UNIQUE,
+	CONSTRAINT "comments_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "rating" (
+	"timely_maintenance" int,
+	"appropriate_distance" int,
+	"respectful" int,
+	"communication" int,
+	"flexibility" int,
+	"transparency" int,
+	"organized" int,
+	"professionalism" int,
+	"property_id" bigint NOT NULL ,
+	"user_id" bigint NOT NULL ,
+	"id" serial NOT NULL UNIQUE,
+	CONSTRAINT "rating_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+
+
+ALTER TABLE "comments" ADD CONSTRAINT "comments_fk0" FOREIGN KEY ("property_id") REFERENCES "property"("id");
+ALTER TABLE "comments" ADD CONSTRAINT "comments_fk1" FOREIGN KEY ("created_by") REFERENCES "user"("id");
+
+ALTER TABLE "rating" ADD CONSTRAINT "rating_fk0" FOREIGN KEY ("property_id") REFERENCES "property"("id");
+ALTER TABLE "rating" ADD CONSTRAINT "rating_fk1" FOREIGN KEY ("user_id") REFERENCES "user"("id");
