@@ -2,6 +2,7 @@ const express = require('express');
 const apiRouter = express.Router();
 // add middleware (controllers)
 const propertyController = require('../controllers/propertyController');
+const cookieController = require('../controllers/cookieController');
 
 // api routes
 
@@ -33,6 +34,11 @@ apiRouter.get('/city', (req, res) => {});
 apiRouter.post('/rating', (req, res) => {});
 
 //post a comment on a property
-apiRouter.post('/comment', (req, res) => {});
+apiRouter.post(
+  '/comment',
+  cookieController.verifyUser,
+  propertyController.addComment,
+  (req, res) => {}
+);
 
 module.exports = apiRouter;

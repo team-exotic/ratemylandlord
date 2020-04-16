@@ -68,10 +68,10 @@ propertyController.searchByAddress = (req, res, next) => {
 
 propertyController.searchByCity = (req, res, next) => {};
 
-//find the profile page (property row w/all comments and sections)
+//--- find the profile page (property row w/all comments and sections)----//
+
 propertyController.propertyProfile = (req, res, next) => {
   const { id } = req.body;
-  //console.log('inside controller of profile, id is:', id);
   const profileQuery = {
     text: `WITH property_ratings as (
       SELECT 
@@ -120,7 +120,17 @@ propertyController.propertyProfile = (req, res, next) => {
           (curr['flex'] = Number(curr['flex'].slice(0, 4))),
           (curr['tran'] = Number(curr['tran'].slice(0, 4))),
           (curr['org'] = Number(curr['org'].slice(0, 4))),
-          (curr['prof'] = Number(curr['prof'].slice(0, 4)))
+          (curr['prof'] = Number(curr['prof'].slice(0, 4))),
+          (curr['overallRating'] =
+            (curr['tm'] +
+              curr['dist'] +
+              curr['res'] +
+              curr['comm'] +
+              curr['flex'] +
+              curr['tran'] +
+              curr['org'] +
+              curr['prof']) /
+            8)
         );
       });
       console.log('this is profileRow', profileRow);
