@@ -8,7 +8,9 @@ const cookieController = require('../controllers/cookieController');
 
 //add a property
 apiRouter.post('/property', propertyController.addProperty, (req, res) => {
-  res.redirect('/');
+  if (res.locals.name || res.locals.address) {
+    res.status(201);
+  }
 });
 
 //search property by address
