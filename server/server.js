@@ -38,7 +38,7 @@ app.use((req, res) => {
 // global error handler
 app.use((req, res, err) => {
   console.log(`global error handler caught unknown middleware error: ${err}`);
-  res.status(400).json({ err: 'an error has occurred' });
+  res.sendStatus(400).json({ err: 'an error has occurred' });
 });
 
 app.listen(PORT, () => console.log(`listening on port: ${PORT}`));

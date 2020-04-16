@@ -73,45 +73,45 @@ propertyController.addComment = (req, res, next) => {
     });
 };
 
-//GET ADDRESSES - gives list of a matching addresses
-propertyController.searchByAddress = (req, res, next) => {
-  const { address, name } = req.body;
-  let propertyQuery;
-  if (name !== '') {
-    propertyQuery = {
-      text: 'SELECT * FROM "property" WHERE name=$1 OR address=$2 ',
-      values: [name, address]
-    };
-  } else {
-    propertyQuery = {
-      text: 'SELECT * FROM "property" WHERE address=$1',
-      values: [address]
-    };
-  }
-  db.query(propertyQuery)
-    .then((property) => {
-      //console.log('in db query for searchbyaddress data received:', property);
-      if (property.rows.length === 0) {
-        return (res.locals.matchedFound = false);
-      } else {
-        res.locals.property = property.rows; // [{id:'',name: '', address: '', image: ''},etc.]
-      }
-      return next();
-    })
-    .catch((err) => {
-      next({
-        log: `error in middleware propertyController.searchByAddress: ${err}`
-      });
-    });
-};
+// //GET ADDRESSES - gives list of a matching addresses
+// propertyController.searchByAddress = (req, res, next) => {
+//   const { address, name } = req.body;
+//   let propertyQuery;
+//   if (name !== '') {
+//     propertyQuery = {
+//       text: 'SELECT * FROM "property" WHERE name=$1 OR address=$2 ',
+//       values: [name, address]
+//     };
+//   } else {
+//     propertyQuery = {
+//       text: 'SELECT * FROM "property" WHERE address=$1',
+//       values: [address]
+//     };
+//   }
+//   db.query(propertyQuery)
+//     .then((property) => {
+//       console.log('in db query for searchbyaddress data received:', property.rows);
+//       if (property.rows.length === 0) {
+//         return (res.locals.matchedFound = false);
+//       } else {
+//         res.locals.property = property.rows; // [{id:'',name: '', address: '', image: ''},etc.]
+//       }
+//       return next();
+//     })
+//     .catch((err) => {
+//       next({
+//         log: `error in middleware propertyController.searchByAddress: ${err}`
+//       });
+//     });
+// };
 
 //SEARCH BY CITY
-propertyController.searchByCity = (req, res, next) => {
+propertyController.searchByCityNameAddress = (req, res, next) => {
   let { address } = req.body;
   const userQuery = {
     text: `
     SELECT * FROM "property"
-    WHERE address LIKE ('%' ||$1|| '%')
+    WHERE address LIKE ('%' ||$1|| '%') OR name LIKE ('%' ||$1|| '%')
     `,
     values: [address]
   };
