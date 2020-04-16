@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
 import './LoginSignup.scss';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // destructures the currView off of the props to determine which view the component is a part of
 const LoginSignup = ({ currView }) => {
@@ -25,7 +25,7 @@ const LoginSignup = ({ currView }) => {
     }
   };
 
-  // when the user submits their username and password. the view will conditionally render based off of the endpoint. if the user is successful in signing up or loggin in then the page will return to the home screen. 
+  // when the user submits their username and password. the view will conditionally render based off of the endpoint. if the user is successful in signing up or loggin in then the page will return to the home screen.
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!username || !password) {
@@ -42,14 +42,15 @@ const LoginSignup = ({ currView }) => {
     fetch(view, {
       method: 'POST',
       headers: {
-        'Content-Type': 'Application/JSON',
-        Accept: 'Application/JSON'
+        'Content-Type': 'Application/JSON'
       },
       body: body
     })
       .then((res) => {
-        //if successful redirect to the home page
         res.json();
+      })
+      .then(() => {
+        //if successful redirect to the home page
         history.push('/');
       })
       .catch((error) => {
