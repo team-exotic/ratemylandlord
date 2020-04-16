@@ -3,11 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
 import './LoginSignup.scss';
+import { Redirect, useHistory } from 'react-router-dom';
 
 // destructures the currView off of the props to determine which view the component is a part of
 const LoginSignup = ({ currView }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  let history = useHistory();
 
   /**
    * this handleChange covers both the username and password
@@ -23,6 +25,7 @@ const LoginSignup = ({ currView }) => {
     }
   };
 
+  // when the user submits their username and password. the view will conditionally render based off of the endpoint. if the user is successful in signing up or loggin in then the page will return to the home screen. 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!username || !password) {
@@ -38,15 +41,16 @@ const LoginSignup = ({ currView }) => {
     const body = JSON.stringify({ username, password });
     fetch(view, {
       method: 'POST',
-      // credentials:'same-origin',
       headers: {
         'Content-Type': 'Application/JSON',
-        'Accept': 'Application/JSON'
+        Accept: 'Application/JSON'
       },
       body: body
     })
       .then((res) => {
+        //if successful redirect to the home page
         res.json();
+        history.push('/');
       })
       .catch((error) => {
         console.log('Username or Password does not exist!', error);
