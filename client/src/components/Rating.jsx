@@ -11,11 +11,29 @@ const Rating = () => {
     setShow(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    debugger;
+    console.log('this is e targ:', event.target.value);
+
+    // const body = JSON.stringify({ e });
+    // fetch('/rating', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'Application/JSON',
+    //     Accept: 'Application/JSON'
+    //   },
+    //   body: body
+    // })
+    //   .then(() => {
+    //     //if successful redirect to the home page
+    //     history.push('/');
+    //   })
+    //   .catch((error) => {
+    //     console.log('Username or Password does not exist!', error);
+    //   });
 
     setShow(false);
-    // fetch post goes here
   };
 
   return (
@@ -26,10 +44,10 @@ const Rating = () => {
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Rate your Landlord</Modal.Title>
+          <Modal.Title>Rate your Landlord : 1(Worst) - 5(Best)</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group controlId="basicReview">
               <Form.Label>Timely Maintenance</Form.Label>
               <Form.Control as="select">
@@ -96,7 +114,7 @@ const Rating = () => {
                 <option>5</option>
               </Form.Control>
             </Form.Group>
-            <Button variant="primary" onSubmit={handleSubmit}>
+            <Button variant="primary" type="submit">
               Submit
             </Button>
           </Form>
