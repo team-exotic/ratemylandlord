@@ -8,7 +8,8 @@ const cookieController = require('../controllers/cookieController');
 loginRouter.post(
   '/login',
   userController.verifyUser,
-  cookieController.setCookie, //setcookie and store token in user table w/expiration?
+  cookieController.setCookie,
+  cookieController.verifyCookie,
   (req, res) => {
     console.log('in login post after response came back');
     if (res.locals.err) {
@@ -18,7 +19,7 @@ loginRouter.post(
       //send res.cookie?
 
       //res.redirect('/'); // last page they were in
-    } else if (res.locals.matchedFound === false) {
+    } else if (res.locals.matchedFound) {
       res.redirect('/signup', {
         error: 'that user account does not exist, please sign up'
       });

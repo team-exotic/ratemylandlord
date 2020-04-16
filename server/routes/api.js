@@ -41,4 +41,6 @@ apiRouter.post(
   (req, res) => {}
 );
 
+//get comments by property
+apiRouter.get('/comment', (req, res) => {});
 module.exports = apiRouter;

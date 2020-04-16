@@ -32,6 +32,10 @@ propertyController.addProperty = (req, res, next) => {
 
 propertyController.addRating = (req, res, next) => {};
 
+//GET COMMENTS
+propertyController.getComments = (req, res, next) => {};
+
+//ADD COMMENT
 propertyController.addComment = (req, res, next) => {
   const { userId, propertyId, comment } = req.body;
   const commentQuery = {
@@ -40,7 +44,11 @@ propertyController.addComment = (req, res, next) => {
     values: [propertyId, comment, userId]
   };
   db.query(commentQuery)
-    .then((comment) => {})
+    .then((comment) => {
+      console.log('this is the comment res:', comment);
+      res.locals.comment = comment.rows;
+      return next();
+    })
     .catch((err) => {
       next({
         log: `error in middleware propertyController.searchByAddress: ${err}`
