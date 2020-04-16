@@ -4,8 +4,27 @@ const bcrypt = require('bcryptjs');
 const userController = {};
 
 userController.verifyUser = (req, res, next) => {
-  console.log('in verifyuser', req.body);
-  const { username, password } = req.body;
+  const SALT_ROUNDS = 10;
+  //deconstruct username and password from request body
+  let { username, password } = req.body;
+
+  //if user input field for username and password
+  if (
+    req.body.username !== null &&
+    typeof req.body.username === 'string' &&
+    req.body.password !== null &&
+    typeof req.body.password === 'string'
+  ) {
+    //hash user inputted password
+    bcrypt
+      .hash(password, SALT_ROUNDS)
+      .then((err, result) => {
+        password = result;
+      })
+      .catch((err) => {
+        return next(err);
+      });
+  }
   const userQuery = {
     text: 'SELECT * FROM "user" WHERE username = $1 AND password = $2',
     values: [username, password]

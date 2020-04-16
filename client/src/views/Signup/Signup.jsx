@@ -3,7 +3,7 @@ import React from 'react';
 // imports the dual purpose auth form
 import LoginSignup from '../../components/LoginSignup/LoginSignup';
 
-const Login = () => {
+const Signup = () => {
   /**
    * NOTE TO SELF:
    * PICK UP BY EXTRACTING ALL OF THE BELOW RETURN CODE INTO A SEPARATE COMPONENT
@@ -17,9 +17,9 @@ const Login = () => {
   return (
     <>
       {/* tell the auth form to display the appropriate classes/text for a login view */}
-      <LoginSignup currView="login" />
+      <LoginSignup currView="signup" />
     </>
   );
 };
 
-export default Login;
+export default Signup;
