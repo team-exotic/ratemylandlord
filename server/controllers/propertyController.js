@@ -30,7 +30,51 @@ propertyController.addProperty = (req, res, next) => {
   }
 };
 
-propertyController.addRating = (req, res, next) => {};
+propertyController.addRating = (req, res, next) => {
+  const {
+    id,
+    timely_maintenance,
+    appropriate_distance,
+    respectful,
+    communication,
+    flexibility,
+    transparency,
+    organized,
+    professionalism
+  } = req.body;
+  const ratingQuery = {
+    text: `
+    INSERT INTO "rating" r
+    (r.timely_maintenance, r.appropriate_distance, r.respectful, r.communication, r.flexibility, r.transparency, r.organized, r.professionalism)
+    LEFT OUTER JOIN property p
+    p.property.id = $1
+    WHERE 
+    r.property_id = p.property_id
+    VALUES
+    ($2, $3, $4, $5, $6, $7, $8, $9)
+    `,
+    values: [
+      id,
+      timely_maintenance,
+      appropriate_distance,
+      respectful,
+      communication,
+      flexibility,
+      transparency,
+      organized,
+      professionalism
+    ]
+  };
+  db.query(ratingQuery)
+    .then((res) => res.json())
+    .then((rating) => {
+      res.locals.rating = rating;
+      return next();
+    })
+    .catch((err) => {
+      return next(`Error in addRating middleware: ${err}`);
+    });
+};
 
 //GET COMMENTS
 propertyController.getComments = (req, res, next) => {};

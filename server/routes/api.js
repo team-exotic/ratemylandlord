@@ -34,7 +34,9 @@ apiRouter.get('/property/:id', propertyController.propertyProfile, (req, res) =>
 });
 
 //post a rating on a property
-apiRouter.post('/rating', (req, res) => {});
+apiRouter.post('/rating', propertyController.addRating, (req, res) => {
+  res.status(200).send(res.locals.rating);
+});
 
 //post a comment on a property
 apiRouter.post(
