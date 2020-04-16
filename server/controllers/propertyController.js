@@ -30,8 +30,50 @@ propertyController.addProperty = (req, res, next) => {
       });
   }
 };
-//ADD RATING
-propertyController.addRating = (req, res, next) => {};
+
+propertyController.addRating = (req, res, next) => {
+  const {
+    timely_maintenance,
+    appropriate_distance,
+    respectful,
+    communication,
+    flexibility,
+    transparency,
+    organized,
+    professionalism,
+    property_id,
+    user_id
+  } = req.body;
+  const ratingQuery = {
+    text: `
+    INSERT INTO "rating"
+    (timely_maintenance, appropriate_distance, respectful, communication, flexibility, transparency, organized, professionalism, property_id, user_id)
+    VALUES
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+    `,
+    values: [
+      timely_maintenance,
+      appropriate_distance,
+      respectful,
+      communication,
+      flexibility,
+      transparency,
+      organized,
+      professionalism,
+      property_id,
+      req.cookies.userId
+    ]
+  };
+  db.query(ratingQuery)
+    .then((rating) => {
+      console.log(`I am the rating that was posted -->`, rating);
+      res.locals.rating = rating;
+      return next();
+    })
+    .catch((err) => {
+      return next(`Error in addRating middleware: ${err}`);
+    });
+};
 
 //GET COMMENTS
 propertyController.getComments = (req, res, next) => {
@@ -54,11 +96,12 @@ propertyController.getComments = (req, res, next) => {
 
 //ADD COMMENT
 propertyController.addComment = (req, res, next) => {
-  const { userId, propertyId, comment } = req.body;
+  // console.log('userId cookie inside addComment', req.cookies.userId);
+  const { propertyId, comment } = req.body;
   const commentQuery = {
     text:
       'INSERT INTO "comments" (property_id, comment, created_at, created_by) VALUES ($1,$2,NOW(),$3)',
-    values: [propertyId, comment, userId]
+    values: [propertyId, comment, req.cookies.userId]
   };
   db.query(commentQuery)
     .then((comment) => {
