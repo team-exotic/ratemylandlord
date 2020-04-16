@@ -79,6 +79,7 @@ userController.createUser = (req, res, next) => {
       .then((user) => {
         /*this console is only for debugging*/
         console.log('this is user res', user);
+        res.locals.user = user.rows[0];
         return next();
       })
       .catch((err) => {
