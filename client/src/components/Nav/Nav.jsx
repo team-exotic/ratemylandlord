@@ -1,13 +1,11 @@
 // build navr bar here and import it into hom.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 const NavBar = () => {
-  const [isLoggedIn, setLogin] = useState(false);
-
   return (
     <header className="header">
       <div className="container">
@@ -25,10 +23,10 @@ const NavBar = () => {
               </div>
               <nav className="phone_num ml-auto">
                 <Link className="phone_num_inner" to="/">
-                  <span> Home </span>{' '}
+                  <span> Home </span>
                 </Link>
                 <Link className="phone_num_inner" to="/login">
-                  <span> Login </span>{' '}
+                  <span> Login </span>
                 </Link>
                 <Link className="phone_num_inner" to="/signup">
                   <span> Signup </span>

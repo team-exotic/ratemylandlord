@@ -13,6 +13,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* redux provider insert here, extract it to the map state to props  */}
     <BrowserRouter>
       <Switch>
         <Route path="/" exact render={(props) => <Home {...props} />} />

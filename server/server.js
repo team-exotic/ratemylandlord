@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 /*automatically parse urlencoded body content from incoming
 request and place it in req.body*/
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(cookieParser('isLoggedIn'));
 
 // serve static files
 app.use('/public', express.static(path.join(__dirname, '../client/public')));
@@ -26,8 +26,7 @@ const loginRouter = require('./routes/login');
 const apiRouter = require('./routes/api');
 
 // route handlers
-app.use('/account', loginRouter);
-// app.use('/signup', loginRouter);
+app.use('/', loginRouter);
 app.use('/', apiRouter);
 
 // catch-all route handler for any unknown route requests
@@ -39,7 +38,7 @@ app.use((req, res) => {
 // global error handler
 app.use((req, res, err) => {
   console.log(`global error handler caught unknown middleware error: ${err}`);
-  res.status(400).json({ err: 'an error has occurred' });
+  res.sendStatus(400).json({ err: 'an error has occurred' });
 });
 
 app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
