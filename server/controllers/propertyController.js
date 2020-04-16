@@ -1,6 +1,7 @@
 const db = require('../models/model.js');
 const propertyController = {};
 
+//ADD PROPERTY
 propertyController.addProperty = (req, res, next) => {
   //body contains address, name*;
   //might have to transform how address is typed in? take into account extra spacing or commas
@@ -29,40 +30,56 @@ propertyController.addProperty = (req, res, next) => {
       });
   }
 };
-
+//ADD RATING
 propertyController.addRating = (req, res, next) => {};
 
 //GET COMMENTS
-propertyController.getComments = (req, res, next) => {};
+propertyController.getComments = (req, res, next) => {
+  const { propertyId } = req.body;
+  const commentQuery = {
+    text:
+      'SELECT comment, created_at FROM "comments" WHERE property_id=$1 ORDER BY id DESC',
+    values: [propertyId]
+  };
+  db.query(commentQuery)
+    .then((comments) => {
+      console.log('comments received:', comments.rows);
+      res.locals.comments = comments.rows;
+      return next();
+    })
+    .catch((err) => {
+      next((res.locals.err = err));
+    });
+};
 
 //ADD COMMENT
 propertyController.addComment = (req, res, next) => {
   const { userId, propertyId, comment } = req.body;
   const commentQuery = {
     text:
-      'INSERT INTO "comment" (property_id, comment, created_at, created_by) VALUES ($1,$2,NOW(),$3)',
+      'INSERT INTO "comments" (property_id, comment, created_at, created_by) VALUES ($1,$2,NOW(),$3)',
     values: [propertyId, comment, userId]
   };
   db.query(commentQuery)
     .then((comment) => {
-      console.log('this is the comment res:', comment);
+      console.log('this is the comment res:', comment.rows);
       res.locals.comment = comment.rows;
       return next();
     })
     .catch((err) => {
       next({
-        log: `error in middleware propertyController.searchByAddress: ${err}`
+        log: `error in middleware propertyController.addComment: ${err}`
       });
     });
 };
 
-//gives list of a matching addresses
+//GET ADDRESSES - gives list of a matching addresses
 propertyController.searchByAddress = (req, res, next) => {
   const { address, name } = req.body;
   let propertyQuery;
   if (name !== '') {
     propertyQuery = {
-      text: 'SELECT * FROM "property" WHERE name=$1 or address=$2 ',
+      text: 'SELECT * FROM "property" WHERE name=$1 OR address=$2 ',
       values: [name, address]
     };
   } else {
@@ -88,6 +105,7 @@ propertyController.searchByAddress = (req, res, next) => {
     });
 };
 
+//SEARCH BY CITY
 propertyController.searchByCity = (req, res, next) => {
   let { address } = req.body;
   const userQuery = {
@@ -144,7 +162,7 @@ propertyController.propertyProfile = (req, res, next) => {
        LEFT OUTER JOIN property_comments pc
         on p.id = pc.property_id
       WHERE
-       p.id = $1 ORDER BY pc.created_at DESC `,
+       p.id = $1 ORDER BY pc.id DESC `,
     values: [id]
   };
   db.query(profileQuery)
