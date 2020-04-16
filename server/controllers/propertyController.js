@@ -32,7 +32,21 @@ propertyController.addProperty = (req, res, next) => {
 
 propertyController.addRating = (req, res, next) => {};
 
-propertyController.addComment = (req, res, next) => {};
+propertyController.addComment = (req, res, next) => {
+  const { userId, propertyId, comment } = req.body;
+  const commentQuery = {
+    text:
+      'INSERT INTO "comment" (property_id, comment, created_at, created_by) VALUES ($1,$2,NOW(),$3)',
+    values: [propertyId, comment, userId]
+  };
+  db.query(commentQuery)
+    .then((comment) => {})
+    .catch((err) => {
+      next({
+        log: `error in middleware propertyController.searchByAddress: ${err}`
+      });
+    });
+};
 
 //gives list of a matching addresses
 propertyController.searchByAddress = (req, res, next) => {
