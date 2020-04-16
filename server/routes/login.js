@@ -9,7 +9,7 @@ loginRouter.post(
   '/login',
   userController.verifyUser,
   cookieController.setCookie,
-  cookieController.verifyCookie,
+  cookieController.verifyUser,
   (req, res) => {
     console.log('in login post after response came back');
     if (res.locals.err) {

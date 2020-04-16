@@ -41,9 +41,18 @@ apiRouter.post(
   '/comment',
   cookieController.verifyUser,
   propertyController.addComment,
-  (req, res) => {}
+  (req, res, err) => {
+    if (res.locals.comment) {
+      res.status(200).json(res.locals.comment);
+    }
+  }
 );
 
 //get comments by property
-apiRouter.get('/comment', (req, res) => {});
+apiRouter.get('/comment', propertyController.getComments, (req, res) => {
+  if (res.locals.comments) {
+    res.status(200).json(res.locals.comments);
+  }
+});
+
 module.exports = apiRouter;
