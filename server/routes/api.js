@@ -9,26 +9,26 @@ const cookieController = require('../controllers/cookieController');
 //add a property
 apiRouter.post('/property', propertyController.addProperty, (req, res) => {
   if (res.locals.name || res.locals.address) {
-    res.status(201);
+    res.sendStatus(201);
   }
 });
 
-//search property by address
-apiRouter.get('/property', propertyController.searchByAddress, (req, res) => {
-  if (res.locals.matchedFound === false) {
-    res.json({
-      error: 'no matches found, please try again'
-    });
-  } else if (res.locals.err) {
-    res.json({ error: res.locals.err });
-  } else {
-    res.status(200).json(res.locals.property);
-  }
-});
+// //search property by address or name
+// apiRouter.get('/property', propertyController.searchByAddress, (req, res) => {
+//   if (res.locals.matchedFound === false) {
+//     res.json({
+//       error: 'no matches found, please try again'
+//     });
+//   } else if (res.locals.err) {
+//     res.json({ error: res.locals.err });
+//   } else {
+//     res.status(200).json(res.locals.property);
+//   }
+// });
 
 //get property by city
-apiRouter.get('/city', propertyController.searchByCity, (req, res) => {
-  res.status(200).send(res.locals.properties);
+apiRouter.get('/search', propertyController.searchByCityNameAddress, (req, res) => {
+  res.status(200).json(res.locals.properties);
 });
 //get property profile page by propertyID
 apiRouter.get('/property/:id', propertyController.propertyProfile, (req, res) => {
