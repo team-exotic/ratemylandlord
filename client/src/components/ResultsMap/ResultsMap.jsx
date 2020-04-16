@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './ResultsMap.scss';
+import SearchResultItem from '../SearchResultItem/searchResultItem';
 
 const ResultsMap = () => {
   return (
@@ -8,156 +9,140 @@ const ResultsMap = () => {
       <h2 className="text-center">Search Results</h2>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-12 listing-block">
-            <div className="media">
-              <div className="fav-box">
-                <i className="fa fa-heart-o" aria-hidden="true" />
-              </div>
-              <img
-                className="d-flex align-self-start"
-                src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb"
-                alt="house"
-              />
-              <div className="media-body pl-3">
-                <div className="price">
-                  $799,000<small>New York</small>
+          {/* slim scroll div should be here??? */}
+          <div className="slim-scroll">
+            <div className="col-md-12 listing-block">
+              <SearchResultItem />
+              <SearchResultItem />
+              <SearchResultItem />
+              <SearchResultItem />
+              <SearchResultItem />
+              <SearchResultItem />
+              {/* <div className="media">
+                <div className="fav-box">
+                  <i className="fa fa-heart-o" aria-hidden="true" />
                 </div>
-                <div className="stats">
-                  <span>
-                    <i className="fa fa-arrows-alt" />
-                    1678 Sq ft
-                  </span>
-                  <span>
-                    <i className="fa fa-bath" />2 Beadrooms
-                  </span>
+                <img
+                  className="d-flex align-self-start"
+                  src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?h=350&auto=compress&cs=tinysrgb"
+                  alt="house"
+                />
+                <div className="media-body pl-3">
+                  <div className="price">
+                    $506,400<small>New York</small>
+                  </div>
+                  <div className="stats">
+                    <span>
+                      <i className="fa fa-arrows-alt" />
+                      1678 Sq ft
+                    </span>
+                    <span>
+                      <i className="fa fa-bath" />2 Beadrooms
+                    </span>
+                  </div>
+                  <div className="address">4062 Walnut Hill Drive Cincinnati</div>
                 </div>
-                <div className="address">4062 Walnut Hill Drive Cincinnati</div>
               </div>
-            </div>
-            <div className="media">
-              <div className="fav-box">
-                <i className="fa fa-heart-o" aria-hidden="true" />
-              </div>
-              <img
-                className="d-flex align-self-start"
-                src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?h=350&auto=compress&cs=tinysrgb"
-                alt="house"
-              />
-              <div className="media-body pl-3">
-                <div className="price">
-                  $506,400<small>New York</small>
+              <div className="media">
+                <div className="fav-box">
+                  <i className="fa fa-heart-o" aria-hidden="true" />
                 </div>
-                <div className="stats">
-                  <span>
-                    <i className="fa fa-arrows-alt" />
-                    1678 Sq ft
-                  </span>
-                  <span>
-                    <i className="fa fa-bath" />2 Beadrooms
-                  </span>
+                <img
+                  className="d-flex align-self-start"
+                  src="https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?h=350&auto=compress&cs=tinysrgb"
+                  alt="house"
+                />
+                <div className="media-body pl-3">
+                  <div className="price">
+                    $506,400<small>New York</small>
+                  </div>
+                  <div className="stats">
+                    <span>
+                      <i className="fa fa-arrows-alt" />
+                      1678 Sq ft
+                    </span>
+                    <span>
+                      <i className="fa fa-bath" />2 Beadrooms
+                    </span>
+                  </div>
+                  <div className="address">4062 Walnut Hill Drive Cincinnati</div>
                 </div>
-                <div className="address">4062 Walnut Hill Drive Cincinnati</div>
               </div>
-            </div>
-            <div className="media">
-              <div className="fav-box">
-                <i className="fa fa-heart-o" aria-hidden="true" />
-              </div>
-              <img
-                className="d-flex align-self-start"
-                src="https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?h=350&auto=compress&cs=tinysrgb"
-                alt="house"
-              />
-              <div className="media-body pl-3">
-                <div className="price">
-                  $506,400<small>New York</small>
+              <div className="media">
+                <div className="fav-box">
+                  <i className="fa fa-heart-o" aria-hidden="true" />
                 </div>
-                <div className="stats">
-                  <span>
-                    <i className="fa fa-arrows-alt" />
-                    1678 Sq ft
-                  </span>
-                  <span>
-                    <i className="fa fa-bath" />2 Beadrooms
-                  </span>
+                <img
+                  className="d-flex align-self-start"
+                  src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb"
+                  alt="house"
+                />
+                <div className="media-body pl-3">
+                  <div className="price">
+                    $799,000<small>New York</small>
+                  </div>
+                  <div className="stats">
+                    <span>
+                      <i className="fa fa-arrows-alt" />
+                      1678 Sq ft
+                    </span>
+                    <span>
+                      <i className="fa fa-bath" />2 Beadrooms
+                    </span>
+                  </div>
+                  <div className="address">4062 Walnut Hill Drive Cincinnati</div>
                 </div>
-                <div className="address">4062 Walnut Hill Drive Cincinnati</div>
               </div>
-            </div>
-            <div className="media">
-              <div className="fav-box">
-                <i className="fa fa-heart-o" aria-hidden="true" />
-              </div>
-              <img
-                className="d-flex align-self-start"
-                src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb"
-                alt="house"
-              />
-              <div className="media-body pl-3">
-                <div className="price">
-                  $799,000<small>New York</small>
+              <div className="media">
+                <div className="fav-box">
+                  <i className="fa fa-heart-o" aria-hidden="true" />
                 </div>
-                <div className="stats">
-                  <span>
-                    <i className="fa fa-arrows-alt" />
-                    1678 Sq ft
-                  </span>
-                  <span>
-                    <i className="fa fa-bath" />2 Beadrooms
-                  </span>
+                <img
+                  className="d-flex align-self-start"
+                  src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?h=350&auto=compress&cs=tinysrgb"
+                  alt="house"
+                />
+                <div className="media-body pl-3">
+                  <div className="price">
+                    $506,400<small>New York</small>
+                  </div>
+                  <div className="stats">
+                    <span>
+                      <i className="fa fa-arrows-alt" />
+                      1678 Sq ft
+                    </span>
+                    <span>
+                      <i className="fa fa-bath" />2 Beadrooms
+                    </span>
+                  </div>
+                  <div className="address">4062 Walnut Hill Drive Cincinnati</div>
                 </div>
-                <div className="address">4062 Walnut Hill Drive Cincinnati</div>
               </div>
-            </div>
-            <div className="media">
-              <div className="fav-box">
-                <i className="fa fa-heart-o" aria-hidden="true" />
-              </div>
-              <img
-                className="d-flex align-self-start"
-                src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?h=350&auto=compress&cs=tinysrgb"
-                alt="house"
-              />
-              <div className="media-body pl-3">
-                <div className="price">
-                  $506,400<small>New York</small>
+              <div className="media">
+                <div className="fav-box">
+                  <i className="fa fa-heart-o" aria-hidden="true" />
                 </div>
-                <div className="stats">
-                  <span>
-                    <i className="fa fa-arrows-alt" />
-                    1678 Sq ft
-                  </span>
-                  <span>
-                    <i className="fa fa-bath" />2 Beadrooms
-                  </span>
-                </div>
-                <div className="address">4062 Walnut Hill Drive Cincinnati</div>
-              </div>
-            </div>
-            <div className="media">
-              <div className="fav-box">
-                <i className="fa fa-heart-o" aria-hidden="true" />
-              </div>
-              <img
-                className="d-flex align-self-start"
-                src="https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?h=350&auto=compress&cs=tinysrgb"
-                alt="house"
-              />
-              <div className="media-body pl-3">
-                <div className="price">
-                  $506,400<small>New York</small>
-                </div>
-                <div className="stats">
-                  <span>
-                    <i className="fa fa-arrows-alt" />
-                    1678 Sq ft
-                  </span>
-                  <span>
-                    <i className="fa fa-bath" />2 Beadrooms
-                  </span>
-                </div>
-                <div className="address">4062 Walnut Hill Drive Cincinnati</div>
-              </div>
+                <img
+                  className="d-flex align-self-start"
+                  src="https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?h=350&auto=compress&cs=tinysrgb"
+                  alt="house"
+                />
+                <div className="media-body pl-3">
+                  <div className="price">
+                    $506,400<small>New York</small>
+                  </div>
+                  <div className="stats">
+                    <span>
+                      <i className="fa fa-arrows-alt" />
+                      1678 Sq ft
+                    </span>
+                    <span>
+                      <i className="fa fa-bath" />2 Beadrooms
+                    </span>
+                  </div>
+                  <div className="address">4062 Walnut Hill Drive Cincinnati</div>
+                </div> */}
+              {/* </div> */}
             </div>
           </div>
           <div className="col-md-7 map-box mx-0 px-0">
