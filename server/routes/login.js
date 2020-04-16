@@ -8,6 +8,7 @@ const cookieController = require('../controllers/cookieController');
 loginRouter.post(
   '/login',
   userController.verifyUser,
+  cookieController.setCookie,
   cookieController.verifyUser, //setcookie and store token in user table w/expiration?
   (req, res) => {
     console.log('in login post after response came back');

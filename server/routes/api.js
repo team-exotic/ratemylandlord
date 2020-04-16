@@ -6,13 +6,17 @@ const propertyController = require('../controllers/propertyController');
 // api routes
 
 //add a property
-apiRouter.post('/property', (req, res) => {});
+apiRouter.post('/property', propertyController.addProperty, (req, res) => {
+  res.redirect('/');
+});
 
 //get property by address
 apiRouter.get('/property', (req, res) => {});
 
 //get property by city
-apiRouter.get('/city', (req, res) => {});
+apiRouter.get('/city', propertyController.searchByCity, (req, res) => {
+  res.status(200).send(res.locals.properties);
+});
 
 //post a rating on a property
 apiRouter.post('/rating', (req, res) => {});
