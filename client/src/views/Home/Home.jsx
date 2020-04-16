@@ -11,7 +11,6 @@ const Home = () => {
 
   // function that will be drilled down to the HeroSearch component
   const handleSearch = (address) => {
-    console.log('inside handleSearch of Home component');
     const body = JSON.stringify({ address });
     fetch('/search', {
       method: 'POST',

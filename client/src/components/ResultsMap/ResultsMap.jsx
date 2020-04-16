@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import './ResultsMap.scss';
 import SearchResultItem from '../SearchResultItem/searchResultItem';
 
 const ResultsMap = ({ results }) => {
-  console.log(results);
-
   return (
     <section className="search-box">
       <h2 className="text-center">Search Results</h2>
