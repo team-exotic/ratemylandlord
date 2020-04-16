@@ -8,24 +8,26 @@ const cookieController = require('../controllers/cookieController');
 
 //add a property
 apiRouter.post('/property', propertyController.addProperty, (req, res) => {
-  res.redirect('/');
-});
-
-//search property by address
-apiRouter.get('/property', propertyController.searchByAddress, (req, res) => {
-  if (res.locals.matchedFound === false) {
-    res.json({
-      error: 'no matches found, please try again'
-    });
-  } else if (res.locals.err) {
-    res.json({ error: res.locals.err });
-  } else {
-    res.status(200).json(res.locals.property);
+  if (res.locals.name || res.locals.address) {
+    res.sendStatus(201);
   }
 });
 
+// //search property by address or name
+// apiRouter.get('/property', propertyController.searchByAddress, (req, res) => {
+//   if (res.locals.matchedFound === false) {
+//     res.json({
+//       error: 'no matches found, please try again'
+//     });
+//   } else if (res.locals.err) {
+//     res.json({ error: res.locals.err });
+//   } else {
+//     res.status(200).json(res.locals.property);
+//   }
+// });
+
 //get property by city
-apiRouter.post('/city', propertyController.searchByCityNameAddress, (req, res) => {
+apiRouter.get('/search', propertyController.searchByCityNameAddress, (req, res) => {
   res.status(200).json(res.locals.properties);
 });
 //get property profile page by propertyID
@@ -48,9 +50,18 @@ apiRouter.post(
   '/comment',
   cookieController.verifyUser,
   propertyController.addComment,
-  (req, res) => {}
+  (req, res, err) => {
+    if (res.locals.comment) {
+      res.status(200).json(res.locals.comment);
+    }
+  }
 );
 
 //get comments by property
-apiRouter.get('/comment', (req, res) => {});
+apiRouter.get('/comment', propertyController.getComments, (req, res) => {
+  if (res.locals.comments) {
+    res.status(200).json(res.locals.comments);
+  }
+});
+
 module.exports = apiRouter;
