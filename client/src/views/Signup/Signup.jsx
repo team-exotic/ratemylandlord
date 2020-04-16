@@ -2,6 +2,7 @@ import React from 'react';
 
 // imports the dual purpose auth form
 import LoginSignup from '../../components/LoginSignup/LoginSignup';
+import Nav from '../../components/Nav/Nav';
 
 const Signup = () => {
   /**
@@ -16,6 +17,7 @@ const Signup = () => {
    */
   return (
     <>
+      <Nav />
       {/* tell the auth form to display the appropriate classes/text for a login view */}
       <LoginSignup currView="signup" />
     </>

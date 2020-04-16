@@ -10,6 +10,7 @@ import Home from './views/Home/Home';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup';
 import * as serviceWorker from './serviceWorker';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
