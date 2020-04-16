@@ -105,13 +105,26 @@ propertyController.propertyProfile = (req, res, next) => {
        LEFT OUTER JOIN property_comments pc
         on p.id = pc.property_id
       WHERE
-       p.id = $1 ORDER BY pc.created_at ASC `,
+       p.id = $1 ORDER BY pc.created_at DESC `,
     values: [id]
   };
   db.query(profileQuery)
     .then((profile) => {
       console.log('this is returned sql res for profile', profile.rows);
-      res.locals.propertyProfile = profile.rows;
+      let profileRow = profile.rows.filter((curr) => {
+        return (
+          (curr['tm'] = Number(curr['tm'].slice(0, 4))),
+          (curr['dist'] = Number(curr['dist'].slice(0, 4))),
+          (curr['res'] = Number(curr['res'].slice(0, 4))),
+          (curr['comm'] = Number(curr['comm'].slice(0, 4))),
+          (curr['flex'] = Number(curr['flex'].slice(0, 4))),
+          (curr['tran'] = Number(curr['tran'].slice(0, 4))),
+          (curr['org'] = Number(curr['org'].slice(0, 4))),
+          (curr['prof'] = Number(curr['prof'].slice(0, 4)))
+        );
+      });
+      console.log('this is profileRow', profileRow);
+      res.locals.propertyProfile = profileRow;
       return next();
     })
     .catch((err) => {

@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 /*automatically parse urlencoded body content from incoming
 request and place it in req.body*/
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(cookieParser('isLoggedIn'));
 
 // serve static files
 app.use('/public', express.static(path.join(__dirname, '../client/public')));
@@ -26,7 +26,7 @@ const loginRouter = require('./routes/login');
 const apiRouter = require('./routes/api');
 
 // route handlers
-app.use('/account', loginRouter);
+app.use('/', loginRouter);
 // app.use('/signup', loginRouter);
 app.use('/', apiRouter);
 
