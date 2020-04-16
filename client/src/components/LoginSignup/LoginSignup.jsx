@@ -14,6 +14,7 @@ const LoginSignup = ({ currView }) => {
    * it determines which one to update based on the event it receives
    * if the event target has a type of password, then it updates password -- otherwise, it updates username
    */
+
   const handleChange = (e) => {
     if (e.target.type === 'password') {
       setPassword(e.target.value);
@@ -22,17 +23,46 @@ const LoginSignup = ({ currView }) => {
     }
   };
 
-  const handleSubmit = () => {
-    //   should probably trim the input data to eliminate spaces??
-    //   should fire a fetch request to the backend
-    // after parsing the response and making sure we didn't have an error, redirect to the main page
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!username || !password) {
+      return alert('User or password cannot be empty');
+    }
+    let view;
+    console.log('in the submit');
+    if (currView === 'login') {
+      view = '/login';
+    } else if (currView === 'signup') {
+      view = '/signup';
+    }
+    const body = JSON.stringify({ username, password });
+    fetch(view, {
+      method: 'POST',
+      // credentials:'same-origin',
+      headers: {
+        'Content-Type': 'Application/JSON',
+        Accept: 'Application/JSON'
+      },
+      body: body
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then((res) => {
+        //   // res.username = username;
+        //   // res.password = password;
+        console.log('in the res', res);
+      })
+      .catch((error) => {
+        console.log('Username or Password does not exist!', error);
+      });
   };
 
   return (
     <div className={currView === 'login' ? 'login' : 'signup'}>
       <div className="container-login100">
         <div className="wrap-login100">
-          <form className="login100-form validate-form">
+          <form className="login100-form validate-form" onSubmit={handleSubmit}>
             <span className="login100-form-logo">
               <img
                 src={

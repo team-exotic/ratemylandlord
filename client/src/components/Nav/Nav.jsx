@@ -1,13 +1,11 @@
 // build navr bar here and import it into hom.jsx
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 const NavBar = () => {
-  const [isLoggedIn, setLogin] = useState(false);
-
   return (
     <header class="header">
       <div class="container">
