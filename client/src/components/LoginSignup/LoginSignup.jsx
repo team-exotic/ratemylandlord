@@ -41,17 +41,12 @@ const LoginSignup = ({ currView }) => {
       // credentials:'same-origin',
       headers: {
         'Content-Type': 'Application/JSON',
-        Accept: 'Application/JSON'
+        'Accept': 'Application/JSON'
       },
       body: body
     })
       .then((res) => {
         res.json();
-      })
-      .then((res) => {
-        //   // res.username = username;
-        //   // res.password = password;
-        console.log('in the res', res);
       })
       .catch((error) => {
         console.log('Username or Password does not exist!', error);
