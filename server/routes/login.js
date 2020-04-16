@@ -35,7 +35,7 @@ loginRouter.post(
     if (res.locals.err) {
       res.status(500).json({ error: res.locals.err });
     }
-    res.status(201); // last page they were in
+    res.sendStatus(201); // last page they were in
   }
 );
 

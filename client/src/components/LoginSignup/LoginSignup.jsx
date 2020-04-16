@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
 import './LoginSignup.scss';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 // destructures the currView off of the props to determine which view the component is a part of
 const LoginSignup = ({ currView }) => {
@@ -32,7 +32,7 @@ const LoginSignup = ({ currView }) => {
       return alert('User or password cannot be empty');
     }
     let view;
-    console.log('in the submit');
+    // console.log('in the submit');
     if (currView === 'login') {
       view = '/login';
     } else if (currView === 'signup') {
@@ -42,13 +42,11 @@ const LoginSignup = ({ currView }) => {
     fetch(view, {
       method: 'POST',
       headers: {
-        'Content-Type': 'Application/JSON'
+        'Content-Type': 'Application/JSON',
+        Accept: 'Application/JSON'
       },
       body: body
     })
-      .then((res) => {
-        res.json();
-      })
       .then(() => {
         //if successful redirect to the home page
         history.push('/');
