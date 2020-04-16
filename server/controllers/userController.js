@@ -28,7 +28,8 @@ userController.verifyUser = (req, res, next) => {
   const userQuery = {
     text: 'SELECT * FROM "user" WHERE username = $1 AND password = $2',
     values: [username, password]
-  };
+  }
+    ;
   db.query(userQuery)
     .then((user) => {
       console.log('this is user data received back', user.rows[0]);

@@ -32,7 +32,6 @@ propertyController.addProperty = (req, res, next) => {
 
 propertyController.addRating = (req, res, next) => {
   const {
-    id,
     timely_maintenance,
     appropriate_distance,
     respectful,
@@ -40,21 +39,18 @@ propertyController.addRating = (req, res, next) => {
     flexibility,
     transparency,
     organized,
-    professionalism
+    professionalism,
+    property_id,
+    user_id
   } = req.body;
   const ratingQuery = {
     text: `
-    INSERT INTO "rating" r
-    (r.timely_maintenance, r.appropriate_distance, r.respectful, r.communication, r.flexibility, r.transparency, r.organized, r.professionalism)
-    LEFT OUTER JOIN property p
-    p.property.id = $1
-    WHERE 
-    r.property_id = p.property_id
+    INSERT INTO "rating"
+    (timely_maintenance, appropriate_distance, respectful, communication, flexibility, transparency, organized, professionalism, property_id, user_id)
     VALUES
-    ($2, $3, $4, $5, $6, $7, $8, $9)
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
     `,
     values: [
-      id,
       timely_maintenance,
       appropriate_distance,
       respectful,
@@ -62,12 +58,14 @@ propertyController.addRating = (req, res, next) => {
       flexibility,
       transparency,
       organized,
-      professionalism
+      professionalism,
+      property_id,
+      req.cookies.userId
     ]
   };
   db.query(ratingQuery)
-    .then((res) => res.json())
     .then((rating) => {
+      console.log(`I am the rating that was posted -->`, rating);
       res.locals.rating = rating;
       return next();
     })
@@ -132,12 +130,12 @@ propertyController.searchByAddress = (req, res, next) => {
     });
 };
 
-propertyController.searchByCity = (req, res, next) => {
+propertyController.searchByCityNameAddress = (req, res, next) => {
   let { address } = req.body;
   const userQuery = {
     text: `
     SELECT * FROM "property"
-    WHERE address LIKE ('%' ||$1|| '%')
+    WHERE address LIKE ('%' ||$1|| '%') OR name LIKE ('%' ||$1|| '%') 
     `,
     values: [address]
   };

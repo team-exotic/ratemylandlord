@@ -25,8 +25,8 @@ apiRouter.get('/property', propertyController.searchByAddress, (req, res) => {
 });
 
 //get property by city
-apiRouter.get('/city', propertyController.searchByCity, (req, res) => {
-  res.status(200).send(res.locals.properties);
+apiRouter.get('/city', propertyController.searchByCityNameAddress, (req, res) => {
+  res.status(200).json(res.locals.properties);
 });
 //get property profile page by propertyID
 apiRouter.get('/property/:id', propertyController.propertyProfile, (req, res) => {
@@ -34,8 +34,8 @@ apiRouter.get('/property/:id', propertyController.propertyProfile, (req, res) =>
 });
 
 //post a rating on a property
-apiRouter.post('/rating', propertyController.addRating, (req, res) => {
-  res.status(200).send(res.locals.rating);
+apiRouter.post('/rating', cookieController.verifyUser, propertyController.addRating, (req, res) => {
+  res.status(200).json(res.locals.rating);
 });
 
 //post a comment on a property
