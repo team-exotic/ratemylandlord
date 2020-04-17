@@ -4,7 +4,7 @@ import { faSearch, faPencilAlt, faEyeSlash } from '@fortawesome/free-solid-svg-i
 
 import HeroSearch from '../HeroSearch/HeroSearch';
 
-const Hero = () => {
+const Hero = ({ handleSearch }) => {
   return (
     <main className="home">
       {/* used to contain the title */}
@@ -54,7 +54,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <HeroSearch />
+      <HeroSearch handleSearch={handleSearch} />
     </main>
   );
 };

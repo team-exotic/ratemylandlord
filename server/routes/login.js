@@ -11,7 +11,6 @@ loginRouter.post(
   cookieController.setCookie,
   cookieController.verifyUser,
   (req, res) => {
-    console.log('in login post after response came back');
     if (res.locals.err) {
       res.status(500).json({ error: res.locals.err });
     } else if (res.locals.user) {

@@ -13,20 +13,20 @@ const NavBar = ({user}) => {
           <div className="col">
             <div className="header_content d-flex flex-row align-items-center justify-content-start">
               <div className="logo">
-                <a href="#">
+                <Link to="/">
                   {/* <img src="images/logo.png" alt></img> */}
                   <div className="nav_title">
                     <FontAwesomeIcon color="white" icon={faBuilding} />
                     <span> Rate My Landlord </span>
                   </div>
-                </a>
+                </Link>
               </div>
               <nav className="phone_num ml-auto">
                 <Link className="phone_num_inner" to="/">
-                  <span> Home </span>{' '}
+                  <span> Home </span>
                 </Link>
                 <Link className="phone_num_inner" to="/login">
-                  <span> Login </span>{' '}
+                  <span> Login </span>
                 </Link>
                 <Link className="phone_num_inner" to="/signup">
                   <span> Signup </span>
