@@ -12,7 +12,8 @@ import Signup from './views/Signup/Signup';
 import PropertyResult from './views/PropertyResult/PropertyResult'
 
 import * as serviceWorker from './serviceWorker';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'nodebootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap';
 
 ReactDOM.render(
   <React.StrictMode>
