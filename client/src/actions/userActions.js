@@ -13,15 +13,15 @@
 import axios from 'axios';
 import * as types from '../constants/actionTypes';
 
-export const verifyLogin = ({currView}) => (dispatch) => {
-  let view;
-  if (currView === 'login') {
-    view = '/login';
-  } else if (currView === 'signup') {
-    view = '/signup';
-  }
+export const verifyLogin = () => (dispatch) => {
+  // let view;
+  // if (currView === 'login') {
+  //   view = '/login';
+  // } else if (currView === 'signup') {
+  //   view = '/signup';
+  // }
   axios
-    .get(view)
+    .post('/login')
     .then(({ data }) => {
       // if (!data.isLoggedIn) {
       //   return dispatch({

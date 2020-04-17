@@ -5,7 +5,7 @@ import { faBars, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
-const NavBar = () => {
+const NavBar = ({user}) => {
   return (
     <header className="header">
       <div className="container">

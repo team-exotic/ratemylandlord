@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import store from './store';
 
 import './styles/owl.theme.default.scss';
 import './styles/owl.carousel.scss';
@@ -14,7 +15,6 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* redux provider insert here, extract it to the map state to props  */}
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
