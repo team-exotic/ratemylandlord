@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 // import { Link } from 'react-router-dom';
 import Hero from '../../components/HeroSection/Hero';
 import NavBar from '../../components/Nav/Nav';
@@ -8,8 +8,9 @@ import { verifyLogin } from '../../actions/userActions';
 
 const Home = () => {
    // initially our results will be empty
- const [results, setResults] = useState([]);
+ 
   const user = useSelector((state) => state.user);
+  const [results, setResults] = useState([]);
   console.log('redux', user);
   // const mapStateToProps = ({ user: { isLoggedIn } }) => ({
   //   isLoggedIn
@@ -20,6 +21,7 @@ const Home = () => {
     if (user) {
       dispatch(verifyLogin(user));
     }
+  })
       // function that will be drilled down to the HeroSearch component
       const handleSearch = (address) => {
         const body = JSON.stringify({ address });
@@ -38,7 +40,7 @@ const Home = () => {
             // console.log(results);
           });
       };
-    })
+  
  return (
    <div className="super_container">
      <NavBar user={user} />
