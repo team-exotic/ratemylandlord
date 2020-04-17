@@ -205,7 +205,7 @@ propertyController.propertyProfile = (req, res, next) => {
        LEFT OUTER JOIN property_comments pc
         on p.id = pc.property_id
       WHERE
-       p.id = $1 ORDER BY pc.id DESC `,
+       p.id = $1 `,
     values: [id]
   };
   db.query(profileQuery)
