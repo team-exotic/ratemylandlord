@@ -31,7 +31,7 @@ apiRouter.post('/search', propertyController.searchByCityNameAddress, (req, res)
   res.status(200).json(res.locals.properties);
 });
 //get property profile page by propertyID
-apiRouter.get('/property/:id', propertyController.propertyProfile, (req, res) => {
+apiRouter.post('/propertyprofile', propertyController.propertyProfile, (req, res) => {
   res.status(200).json(res.locals.propertyProfile);
 });
 
