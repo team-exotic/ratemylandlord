@@ -1,34 +1,38 @@
-import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-import Hero from '../../components/HeroSection/Hero';
+import React, { useState } from 'react';
+
+// import components
 import NavBar from '../../components/Nav/Nav';
-import { useDispatch, useSelector, connect } from 'react-redux';
-import { verifyLogin } from '../../actions/userActions';
+import Hero from '../../components/HeroSection/Hero';
+import ResultsMap from '../../components/ResultsMap/ResultsMap';
 
 const Home = () => {
-  const user = useSelector((state) => state.user);
-  console.log('redux', user);
-  // const mapStateToProps = ({ user: { isLoggedIn } }) => ({
-  //   isLoggedIn
-  // });
-  const dispatch = useDispatch();
+  // initially our results will be empty
+  const [results, setResults] = useState([]);
 
-  useEffect(() => {
-    if (user) {
-      dispatch(verifyLogin(user));
-    }
-
-    // const mapDispatchToProps = (dispatch) => ({});
-    // const { isLoggedIn } = this.props;
-    //   if (!isLoggedIn) {
-    //     return <></>;
-    //   }
-  });
+  // function that will be drilled down to the HeroSearch component
+  const handleSearch = (address) => {
+    const body = JSON.stringify({ address });
+    fetch('/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/JSON',
+        Accept: 'Application/JSON'
+      },
+      body: body
+    })
+      .then((res) => res.json())
+      .then((parsed) => {
+        // pushed the array of results into our state
+        setResults(parsed);
+        // console.log(results);
+      });
+  };
 
   return (
     <div className="super_container">
-      <NavBar user={user} />
-      <Hero />
+      <NavBar />
+      <Hero handleSearch={handleSearch} />
+      <ResultsMap results={results} />
     </div>
   );
 };

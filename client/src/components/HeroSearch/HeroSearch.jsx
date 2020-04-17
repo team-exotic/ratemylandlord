@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const HeroSearch = () => {
+const HeroSearch = ({ handleSearch }) => {
   const [search, setSearch] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(search);
+    handleSearch(search);
   };
 
   return (
@@ -22,7 +22,7 @@ const HeroSearch = () => {
                 <div className="search_form_content d-flex flex-row align-items-start justfy-content-start flex-wrap">
                   <input
                     className="search_form_input"
-                    placeholder="Enter an adress, city, landlord, or property manager"
+                    placeholder="Enter an adress, city, or name"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                   />

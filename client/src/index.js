@@ -12,6 +12,8 @@ import Home from './views/Home/Home';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup';
 import * as serviceWorker from './serviceWorker';
+//import 'nodebootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap';
 
 ReactDOM.render(
   <React.StrictMode>
