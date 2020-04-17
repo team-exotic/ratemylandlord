@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import NavBar from '../../components/Nav/Nav';
 import HeroSearch from '../../components/HeroSearch/HeroSearch';
@@ -7,8 +7,18 @@ import './PropertyResult.scss';
 
 // Receives the 'match' params from React router, which can be used to grab a property id
 const PropertyResult = ({ match }) => {
+  const [propertyDetails, setPropertyDetails] = useState([]);
+
   const getDetails = () => {
-    fetch()
+    const body = JSON.stringify({ id: 1 });
+    fetch('http://localhost:8000/propertyprofile', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/JSON',
+        Accept: 'Application/JSON'
+      },
+      body: body
+    })
       .then((res) => res.json())
       .then()
       .catch((err) => window.alert('There was an error retrieving the results'));
