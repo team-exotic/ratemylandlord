@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import NavBar from '../../components/Nav/Nav';
 import HeroSearch from '../../components/HeroSearch/HeroSearch';
+import Rating from '../../components/RatingModal/RateModal';
 
 import './PropertyResult.scss';
+import PropertyRatingItem from '../../components/PropertyRatingItem/PropertyRatingItem';
 
 // Receives the 'match' params from React router, which can be used to grab a property id
 const PropertyResult = ({ match }) => {
@@ -11,18 +13,25 @@ const PropertyResult = ({ match }) => {
 
   const getDetails = () => {
     const body = JSON.stringify({ id: 1 });
-    fetch('http://localhost:8000/propertyprofile', {
+    fetch('http://localhost:3000/propertyprofile', {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/JSON',
         Accept: 'Application/JSON'
       },
-      body: body
+      body
     })
       .then((res) => res.json())
-      .then()
+      .then((parsed) => {
+        setPropertyDetails(parsed);
+        console.log(propertyDetails);
+      })
       .catch((err) => window.alert('There was an error retrieving the results'));
   };
+
+  useEffect(() => {
+    getDetails();
+  }, [propertyDetails.length]);
 
   return (
     <div className="super_container property-bg">
@@ -35,7 +44,7 @@ const PropertyResult = ({ match }) => {
           data-parallax="scroll"
           //   data-image-src="images/properties.jpg"
           data-speed="0.8"
-        ></div>
+        />
         <div className="property-result__container">
           <div className="container">
             <div className="row">
@@ -124,6 +133,17 @@ const PropertyResult = ({ match }) => {
               </div>
             </div> */}
           {/* </div> */}
+        </div>
+      </div>
+      <div className="container">
+        <div className="row ">
+          <div className="col-md-12 mt-4">
+            {propertyDetails.map((rating, index) => {
+              // the key = index is an anti-pattern here. the key should be tied to the rating ID but because its not serialized in our DB, we use index for now
+              return <PropertyRatingItem key={index} rating={rating} />;
+            })}
+          </div>
+          <Rating />
         </div>
       </div>
     </div>

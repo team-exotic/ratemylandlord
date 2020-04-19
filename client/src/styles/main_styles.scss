@@ -50,13 +50,7 @@ body {
   background: #eff2f6;
   color: #a5a5a5;
 }
-div {
-  display: block;
-  position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+
 ul {
   list-style: none;
   margin-bottom: 0px;
@@ -500,6 +494,10 @@ section {
   width: 100%;
   height: 100vh;
   max-height: 892px;
+
+  &_content {
+    position: relative;
+  }
 }
 .home_slider_container {
   width: 100%;
@@ -518,6 +516,7 @@ section {
 }
 .slide_container {
   width: 100%;
+  position: relative;
   top: 42%;
 }
 .slide_content {

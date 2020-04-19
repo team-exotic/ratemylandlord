@@ -11,15 +11,8 @@ const ResultsMap = ({ results }) => {
       <h2 className="text-center">Search Results</h2>
       <div className="container-fluid">
         <div className="row">
-          {/* slim scroll div should be here??? */}
           <div className="slim-scroll">
             <div className="col-md-12 listing-block">
-              {/* <SearchResultItem />
-              <SearchResultItem />
-              <SearchResultItem />
-              <SearchResultItem />
-              <SearchResultItem />
-              <SearchResultItem /> */}
               {results.map((property) => {
                 return <SearchResultItem property={property} key={property.id} />;
               })}
