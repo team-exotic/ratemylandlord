@@ -188,7 +188,8 @@ propertyController.propertyProfile = (req, res, next) => {
       GROUP BY property_id
       ),
       property_comments as (
-      SELECT 
+      SELECT
+        id as comment_id,
        property_id,
        comment,
        created_at
