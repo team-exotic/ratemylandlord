@@ -65,6 +65,7 @@ const PropertyResult = ({ match }) => {
           </div>
         </div>
       </div>
+
       <HeroSearch />
 
       <div className="intro">
@@ -76,9 +77,6 @@ const PropertyResult = ({ match }) => {
                   <div className="intro_title">Codesmith</div>
                   <div className="intro_tags">
                     <ul>
-                      {/* <li>
-                        <a href="#">Hottub</a>
-                      </li> */}
                       <li>
                         <a href="#">Whiteboard Desks</a>
                       </li>
@@ -99,7 +97,7 @@ const PropertyResult = ({ match }) => {
             {/* <div className="intro_price_container ml-lg-auto d-flex flex-column align-items-start justify-content-center"> */}
             {/* <div>For Sale</div> */}
             {/* <div className="intro_price">Leave Rating</div>
-            </div> */}
+          </div> */}
           </div>
         </div>
         <div className="intro_slider_container">
@@ -109,43 +107,50 @@ const PropertyResult = ({ match }) => {
             </div>
 
             {/* <div class="owl-item">
-                            <img src="images/intro_1.jpg" alt="" />
-                        </div>
+                          <img src="images/intro_1.jpg" alt="" />
+                      </div>
 
-                        <div class="owl-item">
-                            <img src="images/intro_1.jpg" alt="" />
-                        </div> */}
+                      <div class="owl-item">
+                          <img src="images/intro_1.jpg" alt="" />
+                      </div> */}
           </div>
 
           {/* <div class="intro_slider_nav_container">
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <div class="intro_slider_nav_content d-flex flex-row align-items-start justify-content-end">
-                    <div class="intro_slider_nav intro_slider_prev">
-                      <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                    </div>
-                    <div class="intro_slider_nav intro_slider_next">
-                      <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="intro_slider_nav_content d-flex flex-row align-items-start justify-content-end">
+                  <div class="intro_slider_nav intro_slider_prev">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                  </div>
+                  <div class="intro_slider_nav intro_slider_next">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
+          </div> */}
           {/* </div> */}
         </div>
       </div>
-      <div className="container">
-        <div className="row ">
+
+      <section className="reviews-container">
+        <div className="row">
           <div className="col-md-12 mt-4">
             {propertyDetails.map((rating, index) => {
               // the key = index is an anti-pattern here. the key should be tied to the rating ID but because its not serialized in our DB, we use index for now
-              return <PropertyRatingItem key={index} rating={rating} />;
+              return (
+                <PropertyRatingItem
+                  key={index}
+                  // in order to avoid reversing the propertyDetails array, we just map over it backwards so that most recent reviews get displayed first
+                  rating={propertyDetails[propertyDetails.length - 1 - index]}
+                />
+              );
             })}
           </div>
-          <Rating />
         </div>
-      </div>
+      </section>
+      <Rating />
     </div>
   );
 };

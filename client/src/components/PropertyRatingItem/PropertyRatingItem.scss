@@ -4,19 +4,58 @@
 
 .rating-container {
   display: flex;
-  border: 1px solid;
-  margin: ;
+  background-color: rgba(211, 210, 210, 0.194);
+  border: 1px solid rgb(225, 225, 225);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.rating-container__left {
+  margin-right: 5rem;
 }
 
 .rating-container__right {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  margin-left: 4rem;
+  margin-top: 0.5rem;
 }
 
-.rating-heading {
+.rating-footer__icon {
+  margin-right: 1.6rem;
+}
+
+.rating-subheading {
+  margin-right: 3rem;
+  padding: 0.4rem 1rem;
+  border-radius: 1rem;
+  background: rgb(228, 228, 228);
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+.rating-heading,
+.rating-number {
   font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.rating-number {
+  background: #487fee;
+  text-align: center;
+  color: white;
+  border-radius: 1rem;
 }
 
 .rating-comment {
   font-size: 2rem;
+  margin-top: 1.5rem;
+  color: #333;
+}
+
+.timestamp {
+  margin-top: 0.4rem;
+  font-size: 1.6rem;
 }

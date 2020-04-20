@@ -1,16 +1,30 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 import './PropertyRatingItem.scss';
 
 const PropertyRatingItem = ({ rating }) => {
+  const months = {
+    '01': 'January',
+    '02': 'February',
+    '03': 'March',
+    '04': 'April',
+    '05': 'May',
+    '06': 'June',
+    '07': 'July',
+    '08': 'August',
+    '09': 'September',
+    '10': 'October',
+    '11': 'November',
+    '12': 'December'
+  };
+  // slices the created_at on the letter T so we get 'year-month-date' and then splits that segment on the dashes
+  // ultimately we wind up with an array like ['year', 'month', 'date'] which we can then format
+  const dbTimestap = rating.created_at.slice(0, 10).split('-');
+  const prettyTimestamp = `${months[dbTimestap[1]]} ${dbTimestap[2]}, ${dbTimestap[0]}`;
+
   return (
-    // <div className="list-group-item active">
-    //   <h4 className="list-group-item-heading">Bootstrap</h4>
-    //   <p className="list-group-item-text">
-    //     Bootstrap is a free and open-source front-end web framework for designing websites
-    //     and web applications,...
-    //   </p>
-    // </div>
     <div className="rating-container">
       {/* this div contains the overall rating as well as a thumbs up / down options so other people can judge the review */}
       <div className="rating-container__left">
@@ -19,38 +33,31 @@ const PropertyRatingItem = ({ rating }) => {
       </div>
       {/* this div contains the comment, when it was posted, relevant images(?) */}
       <div className="rating-container__right">
-        <span>Respectfulness: {rating.res}</span>
-        <span>Communication: {rating.comm}</span>
-        <span>Flexibility: {rating.flex}</span>
-        <span>Transparency: {rating.trans}</span>
-        <p className="rating-comment">{rating.comment}</p>
+        <div>
+          <h5 className="rating-subheading">Respectfulness: {rating.res}</h5>
+          <h5 className="rating-subheading">Communication: {rating.comm}</h5>
+          <h5 className="rating-subheading">Flexibility: {rating.flex}</h5>
+          <h5 className="rating-subheading">Transparency: {rating.tran}</h5>
+          <p className="rating-comment">&quot;{rating.comment}&quot;</p>
+
+          <div className="rating-footer">
+            <FontAwesomeIcon
+              className="rating-footer__icon"
+              color="#487fee"
+              icon={faThumbsUp}
+            />
+            <FontAwesomeIcon
+              className="rating-footer__icon"
+              color="#32fa95"
+              icon={faThumbsDown}
+            />
+          </div>
+        </div>
+        <div className="rating-date-container">
+          <h5 className="timestamp">{prettyTimestamp}</h5>
+        </div>
       </div>
     </div>
-    //   <div className="media">
-    //     {/* <div className="fav-box">
-    //     <i className="fa fa-heart-o" aria-hidden="true" />
-    //   </div> */}
-
-    //     <div className="media-body pl-3">
-    //       <div className="price">
-    //         {/* make this the address */}
-    //         {/* <Link to="/property-result"> */}
-    //         {rating.address}
-    //         {/* </Link> */}
-    //       </div>
-    //       <div className="stats">
-    //         <span>
-    //           {/* make this the name */}
-    //           <i className="fa fa-arrows-alt" />
-    //           {rating.name}
-    //         </span>
-    //         {/* <span>
-    //             <i className="fa fa-bath" />2 Beadrooms
-    //           </span> */}
-    //       </div>
-    //       {/* <div className="address">4062 Walnut Hill Drive Cincinnati</div> */}
-    //     </div>
-    //   </div>
   );
 };
 
