@@ -13,7 +13,10 @@
 }
 
 .rating-container__left {
-  margin-right: 5rem;
+  margin-right: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .rating-container__right {
@@ -21,10 +24,20 @@
   justify-content: space-between;
   width: 100%;
   margin-top: 0.5rem;
+  padding-left: 2rem;
+  border-left: 2px solid rgb(225, 225, 225);
 }
 
-.rating-footer__icon {
-  margin-right: 1.6rem;
+.rating-footer {
+  margin-top: 2rem;
+
+  span {
+    margin-right: 1rem;
+  }
+
+  &__icon {
+    margin-right: 0.5rem;
+  }
 }
 
 .rating-subheading {
