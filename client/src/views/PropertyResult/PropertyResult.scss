@@ -1,3 +1,19 @@
+@import '../../styles/variables.scss';
+
+.image-comment-container {
+  display: flex;
+  margin: auto;
+
+  @media (max-width: $breakpoint-desktop) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rating-container {
+    margin: auto !important;
+  }
+}
+
 .property-bg {
   background-color: #fff;
 }
@@ -32,7 +48,7 @@
 .breadcrumbs ul li {
   display: inline-block;
   position: relative;
-  font-size: 12px;
+  font-size: 1.4rem;
   font-weight: 500;
   color: #ffffff;
   line-height: 1.1;
@@ -44,7 +60,7 @@
   margin-right: 3px;
 }
 .breadcrumbs ul li a {
-  font-size: 12px;
+  font-size: 1.4rem;
   font-weight: 500;
   color: #ffffff;
   line-height: 1.1;
@@ -189,7 +205,7 @@
   padding-right: 11px;
   line-height: 20px;
   color: #838383;
-  font-size: 12px;
+  font-size: 1.6rem;
   -webkit-transition: all 200ms ease;
   -moz-transition: all 200ms ease;
   -ms-transition: all 200ms ease;
@@ -584,6 +600,10 @@ Reviews Container
   font-weight: 600;
 }
 
-.property-image {
-  width: 45%;
+.ratings-heading {
+  color: #333;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 2rem 0;
 }

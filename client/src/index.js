@@ -5,14 +5,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styles/owl.theme.default.scss';
 import './styles/owl.carousel.scss';
 import './styles/main_styles.scss';
-import './styles/responsive.scss';
+
 import Home from './views/Home/Home';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup';
-import PropertyResult from './views/PropertyResult/PropertyResult'
+import PropertyResult from './views/PropertyResult/PropertyResult';
 
 import * as serviceWorker from './serviceWorker';
-//import 'nodebootstrap/dist/css/bootstrap.min.css';
+// import 'nodebootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap';
 
 ReactDOM.render(
@@ -23,7 +23,10 @@ ReactDOM.render(
         <Route path="/" exact render={(props) => <Home {...props} />} />
         <Route path="/login" exact render={(props) => <Login {...props} />} />
         <Route path="/signup" exact render={(props) => <Signup {...props} />} />
-        <Route path="/property-result" render={(props) => <PropertyResult {...props} />} />
+        <Route
+          path="/property-result"
+          render={(props) => <PropertyResult {...props} />}
+        />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
