@@ -26,7 +26,7 @@ const SearchResultItem = ({ property }) => {
 
   return (
     <>
-      <Link to="/property-result">
+      <Link to={`/property-result/${property.id}`}>
         <div className="media">
           {/* <div className="fav-box">
         <i className="fa fa-heart-o" aria-hidden="true" />
