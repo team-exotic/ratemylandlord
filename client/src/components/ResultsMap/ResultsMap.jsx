@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './ResultsMap.scss';
 import SearchResultItem from '../SearchResultItem/searchResultItem';
 
 const ResultsMap = ({ results }) => {
+  const [propertyId, setPropertyId] = useState(1);
+
   return (
     <section className="search-box">
       <h2 className="text-center">Search Results</h2>
