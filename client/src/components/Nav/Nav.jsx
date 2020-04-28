@@ -5,7 +5,23 @@ import { faBars, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
-const NavBar = ({user}) => {
+const NavBar = ({ user }) => {
+  const loginLogOutButton = () => {
+    const isLoggedIn = user.isLoggedIn;
+    if (!isLoggedIn) {
+      return (
+        <Link className="phone_num_inner" to="/login">
+          <span> Login </span>
+        </Link>
+      );
+    }
+    return (
+      <Link className="phone_num_inner" to="/">
+        <span> Logout </span>
+      </Link>
+    );
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -25,9 +41,7 @@ const NavBar = ({user}) => {
                 <Link className="phone_num_inner" to="/">
                   <span> Home </span>
                 </Link>
-                <Link className="phone_num_inner" to="/login">
-                  <span> Login </span>
-                </Link>
+                <loginLogOutButton isLoggedIn={true} />
                 <Link className="phone_num_inner" to="/signup">
                   <span> Signup </span>
                 </Link>

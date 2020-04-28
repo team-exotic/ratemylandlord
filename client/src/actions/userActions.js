@@ -20,6 +20,14 @@ export const verifyLogin = () => (dispatch) => {
   // } else if (currView === 'signup') {
   //   view = '/signup';
   // }
+// const body=JSON.stringify()
+  
+//   fetch('/login', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'Application/JSON' },
+    
+// })
+
   axios
     .post('/login')
     .then(({ data }) => {
