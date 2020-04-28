@@ -25,17 +25,10 @@ class Rating extends Component {
     this.setState({ setShow: true });
   };
   handleFormChange = (e) => {
-    //const {name, value} = e.target;
+    const { name, value } = e.target;
 
     this.setState({
-      timely_maintenance: e.target.value,
-      appropriate_distance: e.target.value,
-      respectful: e.target.value,
-      communication: e.target.value,
-      flexibility: e.target.value,
-      transparency: e.target.value,
-      organized: e.target.value,
-      professionalism: e.target.value
+      name: value
     });
   };
 
@@ -77,7 +70,11 @@ class Rating extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="basicReview">
                 <Form.Label>Timely Maintenance</Form.Label>
-                <Form.Control as="select" onChange={this.handleFormChange}>
+                <Form.Control
+                  as="select"
+                  name="timely_maintenance"
+                  onChange={this.handleFormChange}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -85,7 +82,11 @@ class Rating extends Component {
                   <option>5</option>
                 </Form.Control>
                 <Form.Label>Appropriate Distance</Form.Label>
-                <Form.Control as="select" onChange={this.handleFormChange}>
+                <Form.Control
+                  as="select"
+                  name="appropriate_distance"
+                  onChange={this.handleFormChange}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -93,7 +94,11 @@ class Rating extends Component {
                   <option>5</option>
                 </Form.Control>
                 <Form.Label>Respectful</Form.Label>
-                <Form.Control as="select" onChange={this.handleFormChange}>
+                <Form.Control
+                  as="select"
+                  name="respectful"
+                  onChange={this.handleFormChange}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -101,7 +106,11 @@ class Rating extends Component {
                   <option>5</option>
                 </Form.Control>
                 <Form.Label>Communication</Form.Label>
-                <Form.Control as="select" onChange={this.handleFormChange}>
+                <Form.Control
+                  as="select"
+                  name="communication"
+                  onChange={this.handleFormChange}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -109,7 +118,11 @@ class Rating extends Component {
                   <option>5</option>
                 </Form.Control>
                 <Form.Label>Flexibility</Form.Label>
-                <Form.Control as="select" onChange={this.handleFormChange}>
+                <Form.Control
+                  as="select"
+                  name="flexibility"
+                  onChange={this.handleFormChange}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -117,7 +130,11 @@ class Rating extends Component {
                   <option>5</option>
                 </Form.Control>
                 <Form.Label>Transparency</Form.Label>
-                <Form.Control as="select" onChange={this.handleFormChange}>
+                <Form.Control
+                  as="select"
+                  name="transparency"
+                  onChange={this.handleFormChange}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -125,7 +142,11 @@ class Rating extends Component {
                   <option>5</option>
                 </Form.Control>
                 <Form.Label>Organized</Form.Label>
-                <Form.Control as="select" onChange={this.handleFormChange}>
+                <Form.Control
+                  as="select"
+                  name="organized"
+                  onChange={this.handleFormChange}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -133,7 +154,11 @@ class Rating extends Component {
                   <option>5</option>
                 </Form.Control>
                 <Form.Label>Professionalism</Form.Label>
-                <Form.Control as="select" onChange={this.handleFormChange}>
+                <Form.Control
+                  as="select"
+                  name="professionalism"
+                  onChange={this.handleFormChange}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
