@@ -4,7 +4,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 class RateModal extends Component {
   constructor(props) {
     super(props);
-    const { propertyId } = this.props; //not sure parent of this component, need to access property Id
+    const { propertyId } = this.props; //not sure parent of this component, need to access property Id/property_id
     this.state = {
       setShow: false,
       timely_maintenance: 1,
@@ -37,7 +37,7 @@ class RateModal extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    debugger;
+    //debugger;
     fetch('/rating', {
       method: 'POST',
       headers: {
@@ -81,7 +81,7 @@ class RateModal extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="basicReview">
                 {listRatingData.map((data) => (
-                  <div key={data.id} ref={data.id}>
+                  <div key={data.id} className="rating-form" ref={data.id}>
                     <Form.Label>{data.label}:</Form.Label>
                     {/* <Form.Control onChange={this.handleFormChange}> */}
                     <Form.Check
@@ -134,9 +134,11 @@ class RateModal extends Component {
                   onChange={this.handleFormChange}
                 ></Form.Control>
               </Form.Group>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
+              <div id="button-wrapper">
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </div>
             </Form>
           </Modal.Body>
         </Modal>

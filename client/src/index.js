@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styles/owl.theme.default.scss';
 import './styles/owl.carousel.scss';
 import './styles/main_styles.scss';
+import './components/RatingModal/RateModal.scss';
 
 import Home from './views/Home/Home';
 import Login from './views/Login/Login';
