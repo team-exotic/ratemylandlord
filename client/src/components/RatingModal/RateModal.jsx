@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 
 class RateModal extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { propertyId } = this.props; //not sure parent of this component, need to access property Id
     this.state = {
       setShow: false,
       timely_maintenance: 1,
@@ -55,13 +56,23 @@ class RateModal extends Component {
 
     this.handleClose();
   };
+
   render() {
+    const listRatingData = [
+      { id: 1, label: 'Timely Maintenance', name: 'timely_maintenance' },
+      { id: 2, label: 'Appropriate Distance', name: 'appropriate_distance' },
+      { id: 3, label: 'Respectful', name: 'respectful' },
+      { id: 4, label: 'Communication', name: 'communication' },
+      { id: 5, label: 'Flexibility', name: 'flexibility' },
+      { id: 6, label: 'Transparency', name: 'transparency' },
+      { id: 7, label: 'Organized', name: 'organized' },
+      { id: 8, label: 'Professionalism', name: 'professionalism' }
+    ];
     return (
       <div className="Rating">
         <Button variant="primary" onClick={this.handleShow}>
           Leave a Rating
         </Button>
-
         <Modal show={this.state.setShow} onHide={this.handleClose} centered>
           <Modal.Header closeButton>
             <Modal.Title>Rate your Landlord : 1(Worst) - 5(Best)</Modal.Title>
@@ -69,6 +80,53 @@ class RateModal extends Component {
           <Modal.Body>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="basicReview">
+                {listRatingData.map((data) => (
+                  <div key={data.id}>
+                    <Form.Label>{data.label}:</Form.Label>
+                    {/* <Form.Control onChange={this.handleFormChange}> */}
+                    <Form.Check
+                      inline
+                      label="1"
+                      value={1}
+                      type="radio"
+                      name={data.name}
+                      onChange={this.handleFormChange}
+                    />
+                    <Form.Check
+                      inline
+                      label="2"
+                      value={2}
+                      type="radio"
+                      name={data.name}
+                      onChange={this.handleFormChange}
+                    />
+                    <Form.Check
+                      inline
+                      label="3"
+                      value={3}
+                      type="radio"
+                      name={data.name}
+                      onChange={this.handleFormChange}
+                    />
+                    <Form.Check
+                      inline
+                      label="4"
+                      value={4}
+                      type="radio"
+                      name={data.name}
+                      onChange={this.handleFormChange}
+                    />
+                    <Form.Check
+                      inline
+                      label="5"
+                      value={5}
+                      type="radio"
+                      name={data.name}
+                      onChange={this.handleFormChange}
+                    />
+                    {/* </Form.Control> */}
+                  </div>
+                ))}
                 <Form.Label>Timely Maintenance</Form.Label>
                 <Form.Control
                   as="select"
