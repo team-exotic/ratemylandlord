@@ -81,7 +81,7 @@ class RateModal extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="basicReview">
                 {listRatingData.map((data) => (
-                  <div key={data.id}>
+                  <div key={data.id} ref={data.id}>
                     <Form.Label>{data.label}:</Form.Label>
                     {/* <Form.Control onChange={this.handleFormChange}> */}
                     <Form.Check
@@ -127,102 +127,6 @@ class RateModal extends Component {
                     {/* </Form.Control> */}
                   </div>
                 ))}
-                <Form.Label>Timely Maintenance</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="timely_maintenance"
-                  onChange={this.handleFormChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
-                <Form.Label>Appropriate Distance</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="appropriate_distance"
-                  onChange={this.handleFormChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
-                <Form.Label>Respectful</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="respectful"
-                  onChange={this.handleFormChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
-                <Form.Label>Communication</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="communication"
-                  onChange={this.handleFormChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
-                <Form.Label>Flexibility</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="flexibility"
-                  onChange={this.handleFormChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
-                <Form.Label>Transparency</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="transparency"
-                  onChange={this.handleFormChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
-                <Form.Label>Organized</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="organized"
-                  onChange={this.handleFormChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
-                <Form.Label>Professionalism</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="professionalism"
-                  onChange={this.handleFormChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
                 <Form.Label>Add a comment:</Form.Label>
                 <Form.Control
                   as="textarea"
