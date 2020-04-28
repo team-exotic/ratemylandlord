@@ -4,7 +4,6 @@ import { Modal, Form, Button } from 'react-bootstrap';
 class RateModal extends Component {
   constructor(props) {
     super(props);
-    const { propertyId } = this.props; //not sure parent of this component, need to access property Id/property_id
     this.state = {
       setShow: false,
       timely_maintenance: 1,
@@ -16,7 +15,7 @@ class RateModal extends Component {
       organized: 1,
       professionalism: 1,
       comment: '',
-      property_id: propertyId //need to find right prop name
+      property_id: props.id
     };
   }
   // const [show, setShow] = useState(false);
