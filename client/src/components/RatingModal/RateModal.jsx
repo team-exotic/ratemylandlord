@@ -140,6 +140,11 @@ class Rating extends Component {
                   <option>4</option>
                   <option>5</option>
                 </Form.Control>
+                <Form.Label>Add a comment:</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  onChange={this.handleFormChange}
+                ></Form.Control>
               </Form.Group>
               <Button variant="primary" type="submit">
                 Submit
