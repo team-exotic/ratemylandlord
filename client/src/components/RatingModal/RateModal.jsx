@@ -15,7 +15,8 @@ class RateModal extends Component {
       transparency: 1,
       organized: 1,
       professionalism: 1,
-      comment: ''
+      comment: '',
+      property_id: propertyId //need to find right prop name
     };
   }
   // const [show, setShow] = useState(false);
