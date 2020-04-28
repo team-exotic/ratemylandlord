@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 
-class Rating extends Component {
+class RateModal extends Component {
   constructor() {
     super();
     this.state = {
@@ -13,45 +13,45 @@ class Rating extends Component {
       flexibility: 1,
       transparency: 1,
       organized: 1,
-      professionalism: 1
+      professionalism: 1,
+      comment: ''
     };
   }
   // const [show, setShow] = useState(false);
 
   handleClose = () => {
     this.setState({ setShow: false });
+    console.log('this is state:', this.state);
   };
   handleShow = () => {
     this.setState({ setShow: true });
+    console.log('this is state:', this.state);
   };
   handleFormChange = (e) => {
-    const { name, value } = e.target;
-
     this.setState({
-      name: value
+      [e.target.name]:
+        e.target.name === 'comment' ? e.target.value : parseInt(e.target.value)
     });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    //debugger;
-    console.log('this is state', this.state);
-    // const body = JSON.stringify({ e });
-    // fetch('/rating', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'Application/JSON',
-    //     Accept: 'Application/JSON'
-    //   },
-    //   body: body
-    // })
-    //   .then(() => {
-    //     //if successful redirect to the home page
-    //     history.push('/');
-    //   })
-    //   .catch((error) => {
-    //     console.log('Username or Password does not exist!', error);
-    //   });
+    debugger;
+    fetch('/rating', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/JSON',
+        Accept: 'Application/JSON'
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then(() => {
+        //if successful redirect to the home page
+        this.setState(this.state);
+      })
+      .catch((error) => {
+        console.log(`Rating did not go through: ${error}`);
+      });
 
     this.handleClose();
   };
@@ -59,7 +59,7 @@ class Rating extends Component {
     return (
       <div className="Rating">
         <Button variant="primary" onClick={this.handleShow}>
-          Submit a Rating
+          Leave a Rating
         </Button>
 
         <Modal show={this.state.setShow} onHide={this.handleClose} centered>
@@ -168,6 +168,7 @@ class Rating extends Component {
                 <Form.Label>Add a comment:</Form.Label>
                 <Form.Control
                   as="textarea"
+                  name="comment"
                   onChange={this.handleFormChange}
                 ></Form.Control>
               </Form.Group>
@@ -182,4 +183,4 @@ class Rating extends Component {
   }
 }
 
-export default Rating;
+export default RateModal;
