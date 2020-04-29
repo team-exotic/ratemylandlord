@@ -41,8 +41,7 @@ propertyController.addRating = (req, res, next) => {
     transparency,
     organized,
     professionalism,
-    property_id,
-    user_id
+    property_id
   } = req.body;
   const ratingQuery = {
     text: `
