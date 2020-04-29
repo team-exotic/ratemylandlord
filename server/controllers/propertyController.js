@@ -188,7 +188,8 @@ propertyController.propertyProfile = (req, res, next) => {
       GROUP BY property_id
       ),
       property_comments as (
-      SELECT 
+      SELECT
+        id as comment_id,
        property_id,
        comment,
        created_at
@@ -205,7 +206,7 @@ propertyController.propertyProfile = (req, res, next) => {
        LEFT OUTER JOIN property_comments pc
         on p.id = pc.property_id
       WHERE
-       p.id = $1`,
+       p.id = $1 `,
     values: [id]
   };
   db.query(profileQuery)
