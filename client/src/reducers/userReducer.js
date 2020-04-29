@@ -22,6 +22,11 @@ const userReducer = (state = userState, action) => {
         ...state,
         isLoggedIn: true
       };
+      case types.USER_LOGOUT:
+        return {
+          ...state,
+          isLoggedIn: false
+        };
     default:
       return state;
   }

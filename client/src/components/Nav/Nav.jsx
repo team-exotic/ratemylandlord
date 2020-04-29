@@ -6,21 +6,8 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 const NavBar = ({ user }) => {
-  const loginLogOutButton = () => {
-    const isLoggedIn = user.isLoggedIn;
-    if (!isLoggedIn) {
-      return (
-        <Link className="phone_num_inner" to="/login">
-          <span> Login </span>
-        </Link>
-      );
-    }
-    return (
-      <Link className="phone_num_inner" to="/">
-        <span> Logout </span>
-      </Link>
-    );
-  };
+  // const loginLogOutButton = () => {
+  console.log('checking user', { user });
 
   return (
     <header className="header">
@@ -41,7 +28,10 @@ const NavBar = ({ user }) => {
                 <Link className="phone_num_inner" to="/">
                   <span> Home </span>
                 </Link>
-                <loginLogOutButton isLoggedIn={true} />
+                <Link className="phone_num_inner" to="/login">
+                  {user ? <span> Logout </span> : <span> Login </span>}
+                  {/* <loginLogOutButton isLoggedIn={true} /> */}
+                </Link>
                 <Link className="phone_num_inner" to="/signup">
                   <span> Signup </span>
                 </Link>
