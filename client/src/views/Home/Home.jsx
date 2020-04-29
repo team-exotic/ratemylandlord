@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import NavBar from '../../components/Nav/Nav';
 import Hero from '../../components/HeroSection/Hero';
 import ResultsMap from '../../components/ResultsMap/ResultsMap';
+import RateModal from '../../components/RatingModal/RateModal';
 
 const Home = () => {
   // initially our results will be empty
@@ -33,6 +34,7 @@ const Home = () => {
       <NavBar />
       <Hero handleSearch={handleSearch} />
       <ResultsMap results={results} />
+      <RateModal/>
     </div>
   );
 };
