@@ -24,7 +24,7 @@ ReactDOM.render(
         <Route path="/login" exact render={(props) => <Login {...props} />} />
         <Route path="/signup" exact render={(props) => <Signup {...props} />} />
         <Route
-          path="/property-result"
+          path="/property-result/:id"
           render={(props) => <PropertyResult {...props} />}
         />
       </Switch>
