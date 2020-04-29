@@ -13,7 +13,7 @@ const PropertyResult = ({ match }) => {
   const [topRating, setTopRating] = useState(null);
 
   const getDetails = () => {
-    const body = JSON.stringify({ id: 1 });
+    const body = JSON.stringify({ id: match.params.id });
     fetch('http://localhost:3000/propertyprofile', {
       method: 'POST',
       headers: {
