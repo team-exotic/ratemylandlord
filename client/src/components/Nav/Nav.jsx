@@ -1,5 +1,7 @@
 // build navr bar here and import it into hom.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { verifyLogin } from '../../actions/userActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -8,7 +10,17 @@ import './Nav.scss';
 const NavBar = ({ user }) => {
   // const loginLogOutButton = () => {
   console.log('checking user', { user });
+  const dispatch = useDispatch();
 
+  // console.log('verrriiiiffyyyy', verifyLogin());
+  useEffect(() => {
+    console.log('inUseEffect', { user });
+    // if (user) {
+    console.log('verrriiiiffyyyy222222', verifyLogin(), { user });
+    dispatch(verifyLogin());
+    console.log('dispatched', dispatch(verifyLogin()));
+    // }
+  });
   return (
     <header className="header">
       <div className="container">
@@ -30,7 +42,6 @@ const NavBar = ({ user }) => {
                 </Link>
                 <Link className="phone_num_inner" to="/login">
                   {user ? <span> Logout </span> : <span> Login </span>}
-                  {/* <loginLogOutButton isLoggedIn={true} /> */}
                 </Link>
                 <Link className="phone_num_inner" to="/signup">
                   <span> Signup </span>

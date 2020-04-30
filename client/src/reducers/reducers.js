@@ -8,10 +8,11 @@
  *
  * ************************************
  */
+import { combineReducers } from 'redux';
 
 //import reducers here
 import userReducer from './userReducer';
-import { combineReducers } from 'redux';
+
 
 //combine reducers here
 const reducers = combineReducers({

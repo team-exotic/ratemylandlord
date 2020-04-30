@@ -4,7 +4,7 @@ import React from 'react';
 import LoginSignup from '../../components/LoginSignup/LoginSignup';
 import Nav from '../../components/Nav/Nav';
 
-const Login = () => {
+const Login = ({ user }) => {
   /**
    * NOTE TO SELF:
    * PICK UP BY EXTRACTING ALL OF THE BELOW RETURN CODE INTO A SEPARATE COMPONENT
@@ -15,11 +15,12 @@ const Login = () => {
    * that prop will be props.currPage, and will let child component know whether to use login or signup in it's ternarys
    * this will result in some classname changes, a dif page background, and a different handleSubmit (dif fetch req)
    */
+  console.log('logggginnnn', {user});
   return (
     <>
       <Nav />
       {/* tell the auth form to display the appropriate classes/text for a login view */}
-      <LoginSignup currView="login" />
+      <LoginSignup currView="login" user={user} />
     </>
   );
 };

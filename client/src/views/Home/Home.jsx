@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
 import Hero from '../../components/HeroSection/Hero';
 import NavBar from '../../components/Nav/Nav';
 import ResultsMap from '../../components/ResultsMap/ResultsMap';
-import { useDispatch, useSelector, connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { verifyLogin } from '../../actions/userActions';
 
 const Home = () => {
-  // initially our results will be empty
-
-  const user = useSelector((state) => state.user.isLoggedIn);
-  const [results, setResults] = useState([]);
-  console.log('redux', user);
- 
+  //redux store is connected here
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.isLoggedIn);
+  console.log('redux', { user });
+
+  //react state is set here for results
+  // initially our results will be empty
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
-    if (user) {
-      dispatch(verifyLogin());
-    }
+    dispatch(verifyLogin());
   });
   // function that will be drilled down to the HeroSearch component
   const handleSearch = (address) => {
