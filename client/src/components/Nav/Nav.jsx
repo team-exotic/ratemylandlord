@@ -1,7 +1,7 @@
 // build navr bar here and import it into hom.jsx
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { verifyLogin } from '../../actions/userActions';
+import { userActions } from '../../actions/userActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -16,9 +16,9 @@ const NavBar = ({ user }) => {
   useEffect(() => {
     console.log('inUseEffect', { user });
     // if (user) {
-    console.log('verrriiiiffyyyy222222', verifyLogin(), { user });
-    dispatch(verifyLogin());
-    console.log('dispatched', dispatch(verifyLogin()));
+    console.log('verrriiiiffyyyy222222', userActions.login, { user });
+    dispatch(userActions.login());
+    console.log('dispatched', dispatch(userActions.login));
     // }
   });
   return (

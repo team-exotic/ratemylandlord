@@ -3,7 +3,7 @@ import Hero from '../../components/HeroSection/Hero';
 import NavBar from '../../components/Nav/Nav';
 import ResultsMap from '../../components/ResultsMap/ResultsMap';
 import { useDispatch, useSelector } from 'react-redux';
-import { verifyLogin } from '../../actions/userActions';
+import { userActions } from '../../actions/userActions';
 
 const Home = () => {
   //redux store is connected here
@@ -16,7 +16,7 @@ const Home = () => {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    dispatch(verifyLogin());
+    dispatch(userActions.login());
   });
   // function that will be drilled down to the HeroSearch component
   const handleSearch = (address) => {

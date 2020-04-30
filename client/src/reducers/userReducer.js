@@ -26,6 +26,10 @@ const userReducer = (state = userState, action) => {
       return {
         isLoggedIn: false
       };
+    case types.USER_SIGNUP:
+      return {
+        isLoggedIn: true
+      }
     default:
       return state;
   }
