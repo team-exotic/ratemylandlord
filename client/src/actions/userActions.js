@@ -10,13 +10,19 @@
  */
 
 // import actionType constants
-import axios from 'axios';
 import * as types from '../constants/actionTypes';
 
 const logout = () => {
   return (dispatch) => {
-    document.cookie = 'isLoggedIn; 01 Jan 1970';
-    console.log('cookkkiiesss',document.cookie)
+    //clears all cookies to logout user
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i];
+      let eqPos = cookie.indexOf('=');
+      const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    }
+    console.log('in the logout cookiieessss');
     return dispatch({
       type: types.USER_LOGOUT
     });
@@ -24,11 +30,9 @@ const logout = () => {
 };
 
 const login = () => {
-  // const data = localStorage.getItem('isLoggedIn');
   return (dispatch) => {
     dispatch({
       type: types.USER_LOGIN
-      // payload: data
     });
   };
 };

@@ -15,7 +15,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 // import reducer here
 import reducers from './reducers/reducers';
-import { userActions } from './actions/userActions';
+
 
 //adding composeDevTools here to have access to the Redux dev tools
 const store = createStore(
@@ -23,6 +23,6 @@ const store = createStore(
   reducers,
   composeWithDevTools(applyMiddleware(thunk))
 );
-// store.dispatch(userActions());
+
 
 export default store;

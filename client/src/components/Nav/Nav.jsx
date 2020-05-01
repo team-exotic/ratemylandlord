@@ -19,7 +19,7 @@ const NavBar = () => {
     console.log('checking cookies', document.cookie);
     if (
       document.cookie.split(';').filter((item) => {
-        return item.includes('isLoggedIn');
+        return item.includes('isLoggedIn=');
       }).length
     ) {
       dispatch(userActions.login());
@@ -31,6 +31,7 @@ const NavBar = () => {
 
   const handleClick = () => {
     dispatch(userActions.logout());
+    console.log('dispatched correctly');
   };
   return (
     <header className="header">
@@ -51,15 +52,20 @@ const NavBar = () => {
                 <Link className="phone_num_inner" to="/">
                   <span> Home </span>
                 </Link>
-                <Link className="phone_num_inner" to="/login">
-                  {user ? (
-                    <span onClick={handleClick}> Logout </span>
-                  ) : (
+                {user ? (
+                  <Link className="phone_num_inner" onClick={handleClick} to="/">
+                    <span> Logout </span>
+                  </Link>
+                ) : (
+                  <Link className="phone_num_inner" to="/login">
                     <span> Login </span>
-                  )}
-                </Link>
+                  </Link>
+                )}
+                {/* <Link className="phone_num_inner" onClick={handleClick} to="/login"> */}
+                {/* {user ? <span > Logout </span> : <span> Login </span>} */}
+                {/* </Link> */}
                 <Link className="phone_num_inner" to="/signup">
-                  {user ? <span> </span> : <span> Signup </span>}
+                  {user ? <span></span> : <span> Signup </span>}
                 </Link>
               </nav>
               <div className="hamburger ml-auto">
