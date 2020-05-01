@@ -16,7 +16,6 @@ const ResultsMap = ({ results }) => {
               {results.map((property) => {
                 return <SearchResultItem property={property} key={property.id} />;
               })}
-              ;
             </div>
           </div>
           <div className="col-md-7 map-box mx-0 px-0">

@@ -169,84 +169,104 @@ propertyController.searchByCityNameAddress = (req, res, next) => {
 
 //--- find the profile page (property row w/all comments and sections)----//
 
+// propertyController.propertyProfile = (req, res, next) => {
+//   const { id } = req.body;
+//   const profileQuery = {
+//     text: `WITH property_ratings as (
+//       SELECT
+//        property_id,
+//        AVG(timely_maintenance) as tm,
+//        AVG(appropriate_distance) as dist,
+//        AVG(respectful) as res,
+//        AVG(communication) as comm,
+//        AVG(flexibility) as flex,
+//        AVG(transparency) as tran,
+//        AVG(organized) as org,
+//        AVG(professionalism) as prof
+//       FROM "rating"
+//       GROUP BY property_id
+//       ),
+//       property_comments as (
+//       SELECT
+//         id as comment_id,
+//        property_id,
+//        comment,
+//        created_at
+//       FROM comments
+//       ),
+//       comment_ratings as (
+//       SELECT
+//       id as commentrating_id,
+//       helpful,
+//       flagged,
+//       comments_id,
+//       property_id
+//       FROM commentrating
+//       )
+//       SELECT
+//         p.*,
+//         pr.*,
+//         pc.*,
+//         cr.*
+//       FROM
+//        "property" p
+//        LEFT OUTER JOIN property_ratings pr
+//         on p.id = pr.property_id
+//        LEFT OUTER JOIN property_comments pc
+//         on p.id = pc.property_id
+//        LEFT OUTER JOIN comment_ratings cr
+//         on p.id = cr.property_id
+//       WHERE
+//        p.id = $1 `,
+//     values: [id]
+//   };
+//   db.query(profileQuery)
+//     .then((profile) => {
+//       console.log('this is returned sql res for profile', profile.rows);
+//       let profileRow = profile.rows.filter((curr) => {
+//         return (
+//           (curr['tm'] = Number(curr['tm'].slice(0, 4))),
+//           (curr['dist'] = Number(curr['dist'].slice(0, 4))),
+//           (curr['res'] = Number(curr['res'].slice(0, 4))),
+//           (curr['comm'] = Number(curr['comm'].slice(0, 4))),
+//           (curr['flex'] = Number(curr['flex'].slice(0, 4))),
+//           (curr['tran'] = Number(curr['tran'].slice(0, 4))),
+//           (curr['org'] = Number(curr['org'].slice(0, 4))),
+//           (curr['prof'] = Number(curr['prof'].slice(0, 4))),
+//           (curr['overallRating'] =
+//             (curr['tm'] +
+//               curr['dist'] +
+//               curr['res'] +
+//               curr['comm'] +
+//               curr['flex'] +
+//               curr['tran'] +
+//               curr['org'] +
+//               curr['prof']) /
+//             8)
+//         );
+//       });
+//       console.log('this is profileRow', profileRow);
+//       res.locals.propertyProfile = profileRow;
+//       return next();
+//     })
+//     .catch((err) => {
+//       next({
+//         log: `error in middleware propertyController.propertyProfile: ${err}`
+//       });
+//     });
+// };
+
 propertyController.propertyProfile = (req, res, next) => {
   const { id } = req.body;
   const profileQuery = {
-    text: `WITH property_ratings as (
-      SELECT 
-       property_id,
-       AVG(timely_maintenance) as tm,
-       AVG(appropriate_distance) as dist,
-       AVG(respectful) as res,
-       AVG(communication) as comm,
-       AVG(flexibility) as flex,
-       AVG(transparency) as tran,
-       AVG(organized) as org,
-       AVG(professionalism) as prof
-      FROM "rating"
-      GROUP BY property_id
-      ),
-      property_comments as (
-      SELECT
-        id as comment_id,
-       property_id,
-       comment,
-       created_at
-      FROM comments
-      ),
-      comment_ratings as (
-      SELECT 
-      id as commentrating_id,
-      helpful,
-      flagged,
-      comments_id,
-      property_id
-      FROM commentrating
-      )
-      SELECT 
-        p.*,
-        pr.*,
-        pc.*,
-        cr.*
-      FROM
-       "property" p
-       LEFT OUTER JOIN property_ratings pr
-        on p.id = pr.property_id
-       LEFT OUTER JOIN property_comments pc
-        on p.id = pc.property_id
-       LEFT OUTER JOIN comment_ratings cr
-        on p.id = cr.property_id
-      WHERE
-       p.id = $1 `,
+    text: `SELECT cs.property_id, cs.comment,cs.created_at, cs.created_by,cs.id, cr.helpful, cr.flagged, cr.comments_id, r.timely_maintenance, r.appropriate_distance, r.respectful, r.communication, r.flexibility, r.transparency, r.organized, r.professionalism, round((timely_maintenance+appropriate_distance+respectful+communication+flexibility+transparency+organized+professionalism)/8.0, 2) as overallRating
+    FROM comments as cs LEFT OUTER JOIN rating as r ON cs.property_id=r.property_id AND r.user_id=cs.created_by LEFT OUTER JOIN commentrating as cr ON cs.id= cr.comments_id WHERE cs.property_id=$1`,
     values: [id]
   };
   db.query(profileQuery)
     .then((profile) => {
       console.log('this is returned sql res for profile', profile.rows);
-      let profileRow = profile.rows.filter((curr) => {
-        return (
-          (curr['tm'] = Number(curr['tm'].slice(0, 4))),
-          (curr['dist'] = Number(curr['dist'].slice(0, 4))),
-          (curr['res'] = Number(curr['res'].slice(0, 4))),
-          (curr['comm'] = Number(curr['comm'].slice(0, 4))),
-          (curr['flex'] = Number(curr['flex'].slice(0, 4))),
-          (curr['tran'] = Number(curr['tran'].slice(0, 4))),
-          (curr['org'] = Number(curr['org'].slice(0, 4))),
-          (curr['prof'] = Number(curr['prof'].slice(0, 4))),
-          (curr['overallRating'] =
-            (curr['tm'] +
-              curr['dist'] +
-              curr['res'] +
-              curr['comm'] +
-              curr['flex'] +
-              curr['tran'] +
-              curr['org'] +
-              curr['prof']) /
-            8)
-        );
-      });
-      console.log('this is profileRow', profileRow);
-      res.locals.propertyProfile = profileRow;
+      res.locals.propertyProfile = profile.rows;
       return next();
     })
     .catch((err) => {
