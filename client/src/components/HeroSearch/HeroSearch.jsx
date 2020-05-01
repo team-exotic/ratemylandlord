@@ -22,7 +22,7 @@ const HeroSearch = ({ handleSearch }) => {
                 <div className="search_form_content d-flex flex-row align-items-start justfy-content-start flex-wrap">
                   <input
                     className="search_form_input"
-                    placeholder="Enter an adress, city, or name"
+                    placeholder="Enter an address, city, or name"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                   />
