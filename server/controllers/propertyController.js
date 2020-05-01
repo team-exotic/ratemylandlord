@@ -259,7 +259,7 @@ propertyController.searchByCityNameAddress = (req, res, next) => {
 propertyController.propertyProfile = (req, res, next) => {
   const { id } = req.body;
   const profileQuery = {
-    text: `SELECT cs.property_id, cs.comment,cs.created_at, cs.created_by,cs.id, cr.helpful, cr.flagged, cr.comments_id, r.timely_maintenance, r.appropriate_distance, r.respectful, r.communication, r.flexibility, r.transparency, r.organized, r.professionalism, round((timely_maintenance+appropriate_distance+respectful+communication+flexibility+transparency+organized+professionalism)/8.0, 2) as average
+    text: `SELECT cs.property_id, cs.comment,cs.created_at, cs.created_by,cs.id, cr.helpful, cr.flagged, cr.comments_id, r.timely_maintenance, r.appropriate_distance, r.respectful, r.communication, r.flexibility, r.transparency, r.organized, r.professionalism, round((timely_maintenance+appropriate_distance+respectful+communication+flexibility+transparency+organized+professionalism)/8.0, 2) as overallRating
     FROM comments as cs LEFT OUTER JOIN rating as r ON cs.property_id=r.property_id AND r.user_id=cs.created_by LEFT OUTER JOIN commentrating as cr ON cs.id= cr.comments_id WHERE cs.property_id=$1`,
     values: [id]
   };
