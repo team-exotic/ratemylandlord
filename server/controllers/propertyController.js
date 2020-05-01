@@ -259,10 +259,8 @@ propertyController.searchByCityNameAddress = (req, res, next) => {
 propertyController.propertyProfile = (req, res, next) => {
   const { id } = req.body;
   const profileQuery = {
-    text: `SELECT
-    *,
-   round((timely_maintenance+appropriate_distance+respectful+communication+flexibility+transparency+organized+professionalism)/8.0, 2) as average
-   FROM comments INNER JOIN rating ON comments.property_id=rating.property_id AND rating.user_id=comments.created_by AND comments.property_id=$1`,
+    text: `SELECT *,round((timely_maintenance+appropriate_distance+respectful+communication+flexibility+transparency+organized+professionalism)/8.0, 2) as average
+FROM comments INNER JOIN rating ON comments.property_id=rating.property_id AND rating.user_id=comments.created_by INNER JOIN commentrating ON comments.id= commentrating.comments_id WHERE comments.property_id=$1`,
     values: [id]
   };
   db.query(profileQuery)
