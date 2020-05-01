@@ -30,7 +30,6 @@ const NavBar = () => {
   //dispatches logout action if the user wants to logout
   const handleClick = () => {
     dispatch(userActions.logout());
-    console.log('dispatched correctly');
   };
 
   return (
