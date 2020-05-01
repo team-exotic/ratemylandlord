@@ -18,11 +18,10 @@ const logout = () => {
     const cookies = document.cookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
       let cookie = cookies[i];
-      let eqPos = cookie.indexOf('=');
-      const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      let position = cookie.indexOf('=');
+      const name = position > -1 ? cookie.substr(0, position) : cookie;
       document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
     }
-    console.log('in the logout cookiieessss');
     return dispatch({
       type: types.USER_LOGOUT
     });

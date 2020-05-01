@@ -11,12 +11,10 @@ const NavBar = () => {
   //redux store is connected here
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.isLoggedIn);
-  // const logout = dispatch(userActions.logout());
-  console.log('redux', { user });
 
+  //constantly checks to see if ther user is loggedin
   useEffect(() => {
-    console.log('inUseEffect', { user });
-    console.log('checking cookies', document.cookie);
+    //if the user is logged in dispatch login action.
     if (
       document.cookie.split(';').filter((item) => {
         return item.includes('isLoggedIn=');
@@ -29,10 +27,12 @@ const NavBar = () => {
     // }
   });
 
+  //dispatches logout action if the user wants to logout
   const handleClick = () => {
     dispatch(userActions.logout());
     console.log('dispatched correctly');
   };
+
   return (
     <header className="header">
       <div className="container">
@@ -61,9 +61,6 @@ const NavBar = () => {
                     <span> Login </span>
                   </Link>
                 )}
-                {/* <Link className="phone_num_inner" onClick={handleClick} to="/login"> */}
-                {/* {user ? <span > Logout </span> : <span> Login </span>} */}
-                {/* </Link> */}
                 <Link className="phone_num_inner" to="/signup">
                   {user ? <span></span> : <span> Signup </span>}
                 </Link>

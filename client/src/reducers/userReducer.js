@@ -10,6 +10,8 @@
  */
 
 import * as types from '../constants/actionTypes';
+
+
 const userState = {
   //any other state variable for the users go here
   isLoggedIn: false

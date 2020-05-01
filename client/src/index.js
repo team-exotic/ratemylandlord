@@ -19,7 +19,6 @@ import 'react-bootstrap';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* redux provider insert here, extract it to the map state to props  */}
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
