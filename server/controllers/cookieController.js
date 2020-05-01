@@ -4,7 +4,7 @@ cookieController.setCookie = (req, res, next) => {
   //create random number for cookie value and assign to isLoggedIn key
   const secret = Math.floor(Math.random() * 99);
   res.cookie('isLoggedIn', `${secret}`, { maxAge: 1800000 });
-  res.cookie(`userId`, `${res.rows[0].id}`, { maxAge: 1800000 });
+  res.cookie(`userId`, `${res.locals.user.id}`, { maxAge: 1800000 });
   return next();
 };
 

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-
-// import components
-import NavBar from '../../components/Nav/Nav';
 import Hero from '../../components/HeroSection/Hero';
+import NavBar from '../../components/Nav/Nav';
 import ResultsMap from '../../components/ResultsMap/ResultsMap';
 import RateModal from '../../components/RatingModal/RateModal';
 
 const Home = () => {
+  //redux store is connected here
+
+  //react state is set here for results
   // initially our results will be empty
   const [results, setResults] = useState([]);
 
@@ -38,5 +39,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;
