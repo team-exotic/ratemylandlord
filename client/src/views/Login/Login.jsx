@@ -15,7 +15,7 @@ const Login = ({ user }) => {
    * that prop will be props.currPage, and will let child component know whether to use login or signup in it's ternarys
    * this will result in some classname changes, a dif page background, and a different handleSubmit (dif fetch req)
    */
-  console.log('logggginnnn', {user});
+  
   return (
     <>
       <Nav />
