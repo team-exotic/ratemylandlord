@@ -41,8 +41,7 @@ propertyController.addRating = (req, res, next) => {
     transparency,
     organized,
     professionalism,
-    property_id,
-    user_id
+    property_id
   } = req.body;
   const ratingQuery = {
     text: `
@@ -194,17 +193,29 @@ propertyController.propertyProfile = (req, res, next) => {
        comment,
        created_at
       FROM comments
+      ),
+      comment_ratings as (
+      SELECT 
+      id as commentrating_id,
+      helpful,
+      flagged,
+      comments_id,
+      property_id
+      FROM commentrating
       )
       SELECT 
         p.*,
         pr.*,
-        pc.*
+        pc.*,
+        cr.*
       FROM
        "property" p
        LEFT OUTER JOIN property_ratings pr
         on p.id = pr.property_id
        LEFT OUTER JOIN property_comments pc
         on p.id = pc.property_id
+       LEFT OUTER JOIN comment_ratings cr
+        on p.id = cr.property_id
       WHERE
        p.id = $1 `,
     values: [id]

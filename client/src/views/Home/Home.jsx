@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Hero from '../../components/HeroSection/Hero';
 import NavBar from '../../components/Nav/Nav';
 import ResultsMap from '../../components/ResultsMap/ResultsMap';
+import RateModal from '../../components/RatingModal/RateModal';
 
 const Home = () => {
   //redux store is connected here
@@ -34,6 +35,7 @@ const Home = () => {
       <NavBar />
       <Hero handleSearch={handleSearch} />
       <ResultsMap results={results} />
+      <RateModal/>
     </div>
   );
 };
