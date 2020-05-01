@@ -7,17 +7,17 @@ import { userActions } from '../../actions/userActions';
 
 const Home = () => {
   //redux store is connected here
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.isLoggedIn);
-  console.log('redux', { user });
+  // const dispatch = useDispatch();
+  // const user = useSelector((state) => state.user.isLoggedIn);
+  // console.log('redux', { user });
 
   //react state is set here for results
   // initially our results will be empty
   const [results, setResults] = useState([]);
 
-  useEffect(() => {
-    dispatch(userActions.login());
-  });
+  // useEffect(() => {
+  //   dispatch(userActions.login());
+  // });
   // function that will be drilled down to the HeroSearch component
   const handleSearch = (address) => {
     const body = JSON.stringify({ address });
@@ -39,7 +39,7 @@ const Home = () => {
 
   return (
     <div className="super_container">
-      <NavBar user={user} />
+      <NavBar /*user={user}*/ />
       <Hero handleSearch={handleSearch} />
       <ResultsMap results={results} />
     </div>

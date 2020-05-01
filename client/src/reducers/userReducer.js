@@ -12,7 +12,7 @@
 import * as types from '../constants/actionTypes';
 const userState = {
   //any other state variable for the users go here
-  isLoggedIn: true
+  isLoggedIn: false
 };
 
 const userReducer = (state = userState, action) => {
@@ -26,10 +26,6 @@ const userReducer = (state = userState, action) => {
       return {
         isLoggedIn: false
       };
-    case types.USER_SIGNUP:
-      return {
-        isLoggedIn: true
-      }
     default:
       return state;
   }

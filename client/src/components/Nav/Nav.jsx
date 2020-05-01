@@ -1,26 +1,37 @@
 // build navr bar here and import it into hom.jsx
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../../actions/userActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
-const NavBar = ({ user }) => {
-  // const loginLogOutButton = () => {
-  console.log('checking user', { user });
+const NavBar = () => {
+  //redux store is connected here
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.isLoggedIn);
+  // const logout = dispatch(userActions.logout());
+  console.log('redux', { user });
 
-  // console.log('verrriiiiffyyyy', verifyLogin());
   useEffect(() => {
     console.log('inUseEffect', { user });
-    // if (user) {
-    console.log('verrriiiiffyyyy222222', userActions.login, { user });
-    dispatch(userActions.login());
-    console.log('dispatched', dispatch(userActions.login));
+    console.log('checking cookies', document.cookie);
+    if (
+      document.cookie.split(';').filter((item) => {
+        return item.includes('isLoggedIn');
+      }).length
+    ) {
+      dispatch(userActions.login());
+    }
+    // else {
+    //   dispatch(userActions.logout());
     // }
   });
+
+  const handleClick = () => {
+    dispatch(userActions.logout());
+  };
   return (
     <header className="header">
       <div className="container">
@@ -41,10 +52,14 @@ const NavBar = ({ user }) => {
                   <span> Home </span>
                 </Link>
                 <Link className="phone_num_inner" to="/login">
-                  {user ? <span> Logout </span> : <span> Login </span>}
+                  {user ? (
+                    <span onClick={handleClick}> Logout </span>
+                  ) : (
+                    <span> Login </span>
+                  )}
                 </Link>
                 <Link className="phone_num_inner" to="/signup">
-                  <span> Signup </span>
+                  {user ? <span> </span> : <span> Signup </span>}
                 </Link>
               </nav>
               <div className="hamburger ml-auto">
