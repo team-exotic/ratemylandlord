@@ -56,7 +56,7 @@ const PropertyResult = ({ match }) => {
                   <div className="breadcrumbs ml-auto">
                     <ul>
                       <li>
-                        <a href="index.htmo">Home</a>
+                        <a href="/">Home</a>
                       </li>
                       <li>Search Results</li>
                     </ul>
@@ -77,7 +77,8 @@ const PropertyResult = ({ match }) => {
               <div className="intro_content d-flex flex-lg-row flex-column align-items-start justify-content-start">
                 <div className="intro_title_container">
                   <div className="intro_title">Codesmith</div>
-                  <div className="intro_tags">
+                  {/* The below code can be used to insert some "tags" for a property, but was deemed too much of a stretch feature for now */}
+                  {/* <div className="intro_tags">
                     <ul>
                       <li>
                         <a href="#">Whiteboard Desks</a>
@@ -92,7 +93,7 @@ const PropertyResult = ({ match }) => {
                         <a href="#">Lots of homeless peeps</a>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

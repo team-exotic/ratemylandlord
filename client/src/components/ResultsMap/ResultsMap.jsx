@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './ResultsMap.scss';
 import SearchResultItem from '../SearchResultItem/searchResultItem';
 
-const ResultsMap = ({ results }) => {
-  const [propertyId, setPropertyId] = useState(1);
-
+const ResultsMap = ({ results, resultFound }) => {
   return (
     <section className="search-box">
-      <h2 className="text-center">Search Results</h2>
+      <h2 className="text-center">
+        {resultFound ? 'Search Results' : 'No Results Found'}
+      </h2>
       <div className="container-fluid">
         <div className="row">
           <div className="slim-scroll">
@@ -16,7 +17,13 @@ const ResultsMap = ({ results }) => {
               {results.map((property) => {
                 return <SearchResultItem property={property} key={property.id} />;
               })}
-              ;
+              {/* if resultFound becomes falsy, display the option to add a rating for the missing property */}
+              {!resultFound && (
+                <div>
+                  <h4>Would you like to add the first review for this property?</h4>
+                  <Link to="/add-property">Add Review</Link>
+                </div>
+              )}
             </div>
           </div>
           <div className="col-md-7 map-box mx-0 px-0">

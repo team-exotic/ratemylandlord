@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faThumbsDown, faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faFlag } from '@fortawesome/free-solid-svg-icons';
 import ReactTooltip from 'react-tooltip';
 
 import './PropertyRatingItem.scss';
@@ -61,7 +61,6 @@ const PropertyRatingItem = ({ topRating, rating }) => {
                   <ReactTooltip id="upvote" effect="solid" place="bottom">
                     <span>Mark as helpful</span>
                   </ReactTooltip>
-
                   <span>0</span>
 
                   <FontAwesomeIcon
@@ -71,9 +70,6 @@ const PropertyRatingItem = ({ topRating, rating }) => {
                     data-tip
                     data-for="flagReview"
                   />
-                  {/* <ReactTooltip id="flagReview" effect="solid" place="bottom">
-                    <span>Flag Review</span>
-                  </ReactTooltip> */}
                   <span>Flag review</span>
                 </div>
               </div>

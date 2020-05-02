@@ -11,6 +11,7 @@ import Home from './views/Home/Home';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup';
 import PropertyResult from './views/PropertyResult/PropertyResult';
+import AddProperty from './views/AddProperty/AddProperty';
 
 import * as serviceWorker from './serviceWorker';
 // import 'nodebootstrap/dist/css/bootstrap.min.css';
@@ -28,6 +29,7 @@ ReactDOM.render(
           path="/property-result/:id"
           render={(props) => <PropertyResult {...props} />}
         />
+        <Route path="/add-property" exact component={AddProperty} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,

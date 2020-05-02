@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import './variables.scss';
 /* CSS Document */
 
 /******************************
@@ -101,7 +102,7 @@ p a:hover::after {
   opacity: 0.2;
 }
 ::selection {
-  background: #32f996;
+  background: $primary-dark;
   color: #ffffff;
 }
 p::selection {

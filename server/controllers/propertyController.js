@@ -1,10 +1,11 @@
 const db = require('../models/model.js');
+
 const propertyController = {};
 
-//ADD PROPERTY
+// ADD PROPERTY
 propertyController.addProperty = (req, res, next) => {
-  //body contains address, name*;
-  //might have to transform how address is typed in? take into account extra spacing or commas
+  // body contains address, name*;
+  // might have to transform how address is typed in? take into account extra spacing or commas
   const { name, address } = req.body;
   if (
     (req.body.name !== null && typeof req.body.name === 'string') ||
@@ -74,7 +75,7 @@ propertyController.addRating = (req, res, next) => {
     });
 };
 
-//GET COMMENTS
+// GET COMMENTS
 propertyController.getComments = (req, res, next) => {
   const { propertyId } = req.body;
   const commentQuery = {
@@ -93,7 +94,7 @@ propertyController.getComments = (req, res, next) => {
     });
 };
 
-//ADD COMMENT
+// ADD COMMENT
 propertyController.addComment = (req, res, next) => {
   // console.log('userId cookie inside addComment', req.cookies.userId);
   const { propertyId, comment } = req.body;
@@ -147,9 +148,9 @@ propertyController.addComment = (req, res, next) => {
 //     });
 // };
 
-//SEARCH BY CITY
+// SEARCH BY CITY
 propertyController.searchByCityNameAddress = (req, res, next) => {
-  let { address } = req.body;
+  const { address } = req.body;
   const userQuery = {
     text: `
     SELECT * FROM "property"
@@ -167,7 +168,7 @@ propertyController.searchByCityNameAddress = (req, res, next) => {
     });
 };
 
-//--- find the profile page (property row w/all comments and sections)----//
+// --- find the profile page (property row w/all comments and sections)----//
 
 propertyController.propertyProfile = (req, res, next) => {
   const { id } = req.body;
@@ -223,25 +224,25 @@ propertyController.propertyProfile = (req, res, next) => {
   db.query(profileQuery)
     .then((profile) => {
       console.log('this is returned sql res for profile', profile.rows);
-      let profileRow = profile.rows.filter((curr) => {
+      const profileRow = profile.rows.filter((curr) => {
         return (
-          (curr['tm'] = Number(curr['tm'].slice(0, 4))),
-          (curr['dist'] = Number(curr['dist'].slice(0, 4))),
-          (curr['res'] = Number(curr['res'].slice(0, 4))),
-          (curr['comm'] = Number(curr['comm'].slice(0, 4))),
-          (curr['flex'] = Number(curr['flex'].slice(0, 4))),
-          (curr['tran'] = Number(curr['tran'].slice(0, 4))),
-          (curr['org'] = Number(curr['org'].slice(0, 4))),
-          (curr['prof'] = Number(curr['prof'].slice(0, 4))),
-          (curr['overallRating'] =
-            (curr['tm'] +
-              curr['dist'] +
-              curr['res'] +
-              curr['comm'] +
-              curr['flex'] +
-              curr['tran'] +
-              curr['org'] +
-              curr['prof']) /
+          (curr.tm = Number(curr.tm.slice(0, 4))),
+          (curr.dist = Number(curr.dist.slice(0, 4))),
+          (curr.res = Number(curr.res.slice(0, 4))),
+          (curr.comm = Number(curr.comm.slice(0, 4))),
+          (curr.flex = Number(curr.flex.slice(0, 4))),
+          (curr.tran = Number(curr.tran.slice(0, 4))),
+          (curr.org = Number(curr.org.slice(0, 4))),
+          (curr.prof = Number(curr.prof.slice(0, 4))),
+          (curr.overallRating =
+            (curr.tm +
+              curr.dist +
+              curr.res +
+              curr.comm +
+              curr.flex +
+              curr.tran +
+              curr.org +
+              curr.prof) /
             8)
         );
       });
