@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 
 import './styles/owl.theme.default.scss';
 import './styles/owl.carousel.scss';
@@ -20,18 +22,20 @@ import 'react-bootstrap';
 ReactDOM.render(
   <React.StrictMode>
     {/* redux provider insert here, extract it to the map state to props  */}
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact render={(props) => <Home {...props} />} />
-        <Route path="/login" exact render={(props) => <Login {...props} />} />
-        <Route path="/signup" exact render={(props) => <Signup {...props} />} />
-        <Route
-          path="/property-result/:id"
-          render={(props) => <PropertyResult {...props} />}
-        />
-        <Route path="/add-property" exact component={AddProperty} />
-      </Switch>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact render={(props) => <Home {...props} />} />
+          <Route path="/login" exact render={(props) => <Login {...props} />} />
+          <Route path="/signup" exact render={(props) => <Signup {...props} />} />
+          <Route
+            path="/property-result/:id"
+            render={(props) => <PropertyResult {...props} />}
+          />
+          <Route path="/add-property" exact component={AddProperty} />
+        </Switch>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

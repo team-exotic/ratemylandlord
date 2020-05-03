@@ -1,11 +1,37 @@
 // build navr bar here and import it into hom.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { userActions } from '../../actions/userActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 const NavBar = () => {
+  //redux store is connected here
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.isLoggedIn);
+
+  //constantly checks to see if ther user is loggedin
+  useEffect(() => {
+    //if the user is logged in dispatch login action.
+    if (
+      document.cookie.split(';').filter((item) => {
+        return item.includes('isLoggedIn=');
+      }).length
+    ) {
+      dispatch(userActions.login());
+    }
+    // else {
+    //   dispatch(userActions.logout());
+    // }
+  });
+
+  //dispatches logout action if the user wants to logout
+  const handleClick = () => {
+    dispatch(userActions.logout());
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -25,11 +51,17 @@ const NavBar = () => {
                 <Link className="phone_num_inner" to="/">
                   <span> Home </span>
                 </Link>
-                <Link className="phone_num_inner" to="/login">
-                  <span> Login </span>
-                </Link>
+                {user ? (
+                  <Link className="phone_num_inner" onClick={handleClick} to="/">
+                    <span> Logout </span>
+                  </Link>
+                ) : (
+                  <Link className="phone_num_inner" to="/login">
+                    <span> Login </span>
+                  </Link>
+                )}
                 <Link className="phone_num_inner" to="/signup">
-                  <span> Signup </span>
+                  {user ? <span></span> : <span> Signup </span>}
                 </Link>
               </nav>
               <div className="hamburger ml-auto">

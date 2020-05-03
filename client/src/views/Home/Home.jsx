@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-
-// import components
-import NavBar from '../../components/Nav/Nav';
 import Hero from '../../components/HeroSection/Hero';
+import NavBar from '../../components/Nav/Nav';
 import ResultsMap from '../../components/ResultsMap/ResultsMap';
 import RateModal from '../../components/RatingModal/RateModal';
 
 const Home = () => {
-  // initially our results array will be empty, but it populates based on search results
+  // redux store is connected here
+
+  // react state is set here for results
+  // initially our results will be empty
   const [results, setResults] = useState([]);
   // resultsFound is a boolean that allows us to display an "add property?" prompt if it becomes falsy because no results were found after searching
   const [resultFound, setResultFound] = useState(true);
@@ -45,5 +46,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;

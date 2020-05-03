@@ -9,8 +9,6 @@ const SearchResultItem = ({ property }) => {
   // set the id in our state so that it's not truly visible from the page html -> fire a fetch request when clicked?
   // the fetch request can either persist information in Redux, OR we can link to the results page and fire the fetch request on THAT page so we dont need redux
   // the non-redux approach would still need to link to the right page though so youd have to deal with router parameters which might be harder than Redux?
-
-  console.log('inside resultItem', property);
   const hardcodedPics = [
     // 'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb',
     // 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?h=350&auto=compress&cs=tinysrgb',

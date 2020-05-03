@@ -14,14 +14,14 @@ const AddProperty = () => {
   const [landlordName, setLandlordName] = useState('');
   const [address, setAddress] = useState('');
   const [numRatings, setNumRatings] = useState({
-    timely_maintenance: 1,
-    appropriate_distance: 1,
-    respectful: 1,
-    communication: 1,
-    flexibility: 1,
-    transparency: 1,
-    organized: 1,
-    professionalism: 1
+    timely_maintenance: 3,
+    appropriate_distance: 3,
+    respectful: 3,
+    communication: 3,
+    flexibility: 3,
+    transparency: 3,
+    organized: 3,
+    professionalism: 3
   });
   const [comment, setComment] = useState('');
   const [propertyId, setPropertyId] = useState(0);
@@ -40,30 +40,46 @@ const AddProperty = () => {
   const addProperty = async () => {
     fetch('/property', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'Application/JSON',
+        Accept: 'Application/JSON'
+      },
       body: JSON.stringify({
         name: landlordName,
         address
       })
-    });
+    })
+      .then((data) => data.json())
+      .then((parsed) => console.log('parsed addProperty response', parsed))
+      .catch((err) => console.log('error:', err));
   };
 
   const getPropertyId = async () => {
     fetch('/search', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'Application/JSON',
+        Accept: 'Application/JSON'
+      },
       body: JSON.stringify({
         address
       })
     })
       .then((data) => data.json())
       .then((parsed) => {
-        // setPropertyId(parsed);
-        console.log(parsed);
+        console.log('parsed propertyId', parsed);
+        setPropertyId(parsed[0].id);
+        // console.log(propertyId);
       });
   };
 
   const addRatings = async () => {
-    fetch('/property', {
+    fetch('/rating', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'Application/JSON',
+        Accept: 'Application/JSON'
+      },
       body: JSON.stringify({
         timely_maintenance: numRatings.timely_maintenance,
         appropriate_distance: numRatings.appropriate_distance,
@@ -79,8 +95,12 @@ const AddProperty = () => {
   };
 
   const addRatingComment = async () => {
-    fetch('/property', {
+    fetch('/comment', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'Application/JSON',
+        Accept: 'Application/JSON'
+      },
       body: JSON.stringify({
         property_id: propertyId,
         comment

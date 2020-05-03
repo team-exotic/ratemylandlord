@@ -9,7 +9,8 @@ const cookieController = require('../controllers/cookieController');
 
 // add a property
 apiRouter.post('/property', propertyController.addProperty, (req, res) => {
-  if (res.locals.name || res.locals.address) {
+  if (res.locals.success) {
+    console.log('successfully added property -- propertyController.addProperty');
     res.sendStatus(201);
   }
 });
@@ -42,7 +43,7 @@ apiRouter.post(
   cookieController.verifyUser,
   propertyController.addRating,
   (req, res) => {
-    res.status(200).json(res.locals.rating);
+    res.sendStatus(201);
   }
 );
 
@@ -53,7 +54,8 @@ apiRouter.post(
   propertyController.addComment,
   (req, res, err) => {
     if (res.locals.comment) {
-      res.status(200).json(res.locals.comment);
+      // res.status(200).json(res.locals.comment);
+      res.sendStatus(201);
     }
   }
 );
