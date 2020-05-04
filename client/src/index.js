@@ -13,6 +13,7 @@ import Home from './views/Home/Home';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup';
 import PropertyResult from './views/PropertyResult/PropertyResult';
+import AddProperty from './views/AddProperty/AddProperty';
 
 import * as serviceWorker from './serviceWorker';
 // import 'nodebootstrap/dist/css/bootstrap.min.css';
@@ -20,6 +21,7 @@ import 'react-bootstrap';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* redux provider insert here, extract it to the map state to props  */}
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
@@ -30,6 +32,7 @@ ReactDOM.render(
             path="/property-result/:id"
             render={(props) => <PropertyResult {...props} />}
           />
+          <Route path="/add-property" exact component={AddProperty} />
         </Switch>
       </BrowserRouter>
     </Provider>

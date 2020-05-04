@@ -1,11 +1,14 @@
 const db = require('../models/model.js');
+
 const propertyController = {};
 
-//ADD PROPERTY
+// ADD PROPERTY
 propertyController.addProperty = (req, res, next) => {
-  //body contains address, name*;
-  //might have to transform how address is typed in? take into account extra spacing or commas
+  // body contains address, name*;
+  // might have to transform how address is typed in? take into account extra spacing or commas
   const { name, address } = req.body;
+  console.log(`name ${name}`);
+  console.log(`address ${address}`);
   if (
     (req.body.name !== null && typeof req.body.name === 'string') ||
     (req.body.address !== null && typeof req.body.address === 'string')
@@ -21,8 +24,7 @@ propertyController.addProperty = (req, res, next) => {
     };
     db.query(userQuery)
       .then((landLord) => {
-        res.locals.name = landLord.name;
-        res.locals.address = landLord.address;
+        res.locals.success = true;
         return next();
       })
       .catch((err) => {
@@ -32,6 +34,7 @@ propertyController.addProperty = (req, res, next) => {
 };
 
 propertyController.addRating = (req, res, next) => {
+  console.log('addRating body', req.body);
   const {
     timely_maintenance,
     appropriate_distance,
@@ -66,7 +69,7 @@ propertyController.addRating = (req, res, next) => {
   db.query(ratingQuery)
     .then((rating) => {
       console.log(`I am the rating that was posted -->`, rating);
-      res.locals.rating = rating;
+      res.locals.success = true;
       return next();
     })
     .catch((err) => {
@@ -74,7 +77,7 @@ propertyController.addRating = (req, res, next) => {
     });
 };
 
-//GET COMMENTS
+// GET COMMENTS
 propertyController.getComments = (req, res, next) => {
   const { propertyId } = req.body;
   const commentQuery = {
@@ -93,10 +96,11 @@ propertyController.getComments = (req, res, next) => {
     });
 };
 
-//ADD COMMENT
+// ADD COMMENT
 propertyController.addComment = (req, res, next) => {
   // console.log('userId cookie inside addComment', req.cookies.userId);
   const { propertyId, comment } = req.body;
+  console.log('addComment propertyId and comment', propertyId, comment);
   const commentQuery = {
     text:
       'INSERT INTO "comments" (property_id, comment, created_at, created_by) VALUES ($1,$2,NOW(),$3)',
@@ -105,7 +109,8 @@ propertyController.addComment = (req, res, next) => {
   db.query(commentQuery)
     .then((comment) => {
       console.log('this is the comment res:', comment.rows);
-      res.locals.comment = comment.rows;
+      // res.locals.comment = comment.rows;
+      res.locals.success = true;
       return next();
     })
     .catch((err) => {
@@ -147,9 +152,10 @@ propertyController.addComment = (req, res, next) => {
 //     });
 // };
 
-//SEARCH BY CITY
+// SEARCH BY CITY
 propertyController.searchByCityNameAddress = (req, res, next) => {
-  let { address } = req.body;
+  const { address } = req.body;
+  console.log('search', address);
   const userQuery = {
     text: `
     SELECT * FROM "property"
@@ -167,7 +173,7 @@ propertyController.searchByCityNameAddress = (req, res, next) => {
     });
 };
 
-//--- find the profile page (property row w/all comments and sections)----//
+// --- find the profile page (property row w/all comments and sections)----//
 
 // propertyController.propertyProfile = (req, res, next) => {
 //   const { id } = req.body;

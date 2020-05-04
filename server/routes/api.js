@@ -1,4 +1,5 @@
 const express = require('express');
+
 const apiRouter = express.Router();
 // add middleware (controllers)
 const propertyController = require('../controllers/propertyController');
@@ -6,9 +7,10 @@ const cookieController = require('../controllers/cookieController');
 
 // api routes
 
-//add a property
+// add a property
 apiRouter.post('/property', propertyController.addProperty, (req, res) => {
-  if (res.locals.name || res.locals.address) {
+  if (res.locals.success) {
+    console.log('successfully added property -- propertyController.addProperty');
     res.sendStatus(201);
   }
 });
@@ -26,38 +28,39 @@ apiRouter.post('/property', propertyController.addProperty, (req, res) => {
 //   }
 // });
 
-//get property by city
+// get property by city
 apiRouter.post('/search', propertyController.searchByCityNameAddress, (req, res) => {
   res.status(200).json(res.locals.properties);
 });
-//get property profile page by propertyID
+// get property profile page by propertyID
 apiRouter.post('/propertyprofile', propertyController.propertyProfile, (req, res) => {
   res.status(200).json(res.locals.propertyProfile);
 });
 
-//post a rating on a property
+// post a rating on a property
 apiRouter.post(
   '/rating',
   cookieController.verifyUser,
   propertyController.addRating,
   (req, res) => {
-    res.status(200).json(res.locals.rating);
+    res.sendStatus(201);
   }
 );
 
-//post a comment on a property
+// post a comment on a property
 apiRouter.post(
   '/comment',
   cookieController.verifyUser,
   propertyController.addComment,
   (req, res, err) => {
     if (res.locals.comment) {
-      res.status(200).json(res.locals.comment);
+      // res.status(200).json(res.locals.comment);
+      res.sendStatus(201);
     }
   }
 );
 
-//get comments by property
+// get comments by property
 apiRouter.get('/comment', propertyController.getComments, (req, res) => {
   if (res.locals.comments) {
     res.status(200).json(res.locals.comments);

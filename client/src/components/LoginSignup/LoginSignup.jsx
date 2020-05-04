@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import './LoginSignup.scss';
-
 
 // destructures the currView off of the props to determine which view the component is a part of
 const LoginSignup = ({ currView }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  let history = useHistory();
+  const history = useHistory();
 
   /**
    * this handleChange covers both the username and password
@@ -46,10 +45,10 @@ const LoginSignup = ({ currView }) => {
         'Content-Type': 'Application/JSON',
         Accept: 'Application/JSON'
       },
-      body: body
+      body
     })
       .then(() => {
-        //if successful redirect to the home page
+        // if successful redirect to the home page
         history.push('/');
       })
       .catch((error) => {
