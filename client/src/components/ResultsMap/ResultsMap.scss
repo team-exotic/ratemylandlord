@@ -26,6 +26,10 @@ h2.text-center {
 
 .slim-scroll {
   width: 41% !important;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    width: 100% !important;
+  }
 }
 .media {
   background: #fff;
@@ -36,11 +40,19 @@ h2.text-center {
   width: 200px;
   margin: 0;
   height: 14rem;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    height: 20rem;
+  }
 }
 .media-body {
   border: 1px solid #bcbcbc;
   // border-left: 0;
   height: 14rem;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    height: 20rem;
+  }
 }
 .media .price {
   float: left;
