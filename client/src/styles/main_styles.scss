@@ -338,14 +338,14 @@ section {
   padding: 2px;
   overflow: hidden;
 }
-.phone_num_inner {
-  width: 100%;
-  height: 100%;
-  padding-left: 16px;
-  padding-right: 18px;
-  background: transparent;
-  border-radius: 20px;
-}
+// .phone_num_inner {
+//   width: 100%;
+//   height: 100%;
+//   padding-left: 16px;
+//   padding-right: 18px;
+//   background: transparent;
+//   border-radius: 20px;
+// }
 .phone_num span {
   font-size: 16px;
   font-weight: 500;
@@ -528,7 +528,7 @@ section {
   font-weight: 700;
   color: #ffffff;
   text-transform: uppercase;
-  line-height: 0.75;
+  // line-height: 0.75;
 }
 .home_title {
   font-size: 60px;
@@ -566,6 +566,10 @@ section {
   width: 23px;
   height: 14px;
   margin-right: 4px;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    display: block;
+  }
 }
 .home_details_image img {
   max-width: 100%;
